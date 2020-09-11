@@ -1,0 +1,12 @@
+extends layouts/main
+
+block content
+    .formContainer
+        form(action="/join",method="post")
+            input(type="text" name="name" placeholder="name")
+            input(type="email" name="email" placeholder="email")
+            input(tpye="text"  name="password" placeholder="password")
+            input(type='text' name="password2" placeholder="password2")
+            input(type="submit" value="Submit")
+    .gotoHome
+        a(href="/") Go to Home

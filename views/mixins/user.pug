@@ -1,0 +1,7 @@
+mixin userBlock(user={})
+    .userBlock
+        a(href=`/user/${user.id}/profile`)
+            .userAvatar
+                .userImage
+                .userName=user.name
+            .userMessage=user.message

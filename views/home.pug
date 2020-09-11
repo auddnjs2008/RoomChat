@@ -1,0 +1,15 @@
+extends layouts/main
+
+block content
+    .title
+        h1 Room Chat
+        <i class="fas fa-envelope-open"></i>
+    .where
+        if !loggedUser
+            button 
+                a(href="/login") Log In
+            button
+                a(href="/join") Join
+        else
+            button
+                a(href="/logout") Logged Out        

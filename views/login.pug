@@ -1,0 +1,11 @@
+extends layouts/main
+
+block content
+    .formContainer
+        form(action="/login" method="post")
+            input(type="email" name="email" placeholder="E-mail")
+            input(type="text"  name="password" placeholder="password")
+            input(type="submit" value="Submit") 
+    
+    .gotoHome
+        a(href="/") Go to Home

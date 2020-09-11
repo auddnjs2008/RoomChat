@@ -1,0 +1,11 @@
+extends layouts/main
+include mixins/user
+
+block content
+    each user in users
+        +userBlock({
+            id:user.id,
+            name:user.name,
+            message:user.message
+        })
+            
