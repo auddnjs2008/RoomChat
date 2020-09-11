@@ -1,6 +1,9 @@
 extends layouts/main
 
 block content
+    .title
+            h1 Room Chat
+            <i class="fas fa-envelope-open"></i>
     .formContainer
         form(action="/login" method="post")
             input(type="email" name="email" placeholder="E-mail")

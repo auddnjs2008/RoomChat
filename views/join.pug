@@ -1,6 +1,9 @@
 extends layouts/main
 
 block content
+    .title
+        h1 Room Chat
+        <i class="fas fa-envelope-open"></i>
     .formContainer
         form(action="/join",method="post")
             input(type="text" name="name" placeholder="name")

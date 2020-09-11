@@ -1,0 +1,35 @@
+.title {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  color: white;
+  h1 {
+    margin-right: 5px;
+  }
+}
+
+.where {
+  .loginButton,
+  .logoutButton {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    button {
+      width: 200px;
+      height: 50px;
+      background-color: #12cbc4;
+      border: none;
+      outline: none;
+      a {
+        color: white;
+        font-size: 20px;
+      }
+      &:nth-child(1) {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
