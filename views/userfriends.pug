@@ -2,10 +2,10 @@ extends layouts/main
 include mixins/user
 
 block content
-    each user in users
-        +userBlock({
-            id:user.id,
-            name:user.name,
-            message:user.message
-        })
-            
+    if friends.length
+        each friend in friends
+            +userBlock({
+                    id:friend.id,
+                    name:friend.name,
+                    message:friend.message
+                })      

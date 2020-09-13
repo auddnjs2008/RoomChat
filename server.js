@@ -12,7 +12,7 @@ import mongoose from "mongoose";
 import routes from "./routes";
 import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
-
+import apiRouter from "./routers/apiRouter";
 import "./passport";
 import { localMiddleware } from "./localMiddleware";
 
@@ -50,4 +50,5 @@ app.use(localMiddleware);
 
 app.use(routes.home, globalRouter);
 app.use(routes.user, userRouter);
+app.use(routes.api, apiRouter);
 app.listen(Port, handleListening);

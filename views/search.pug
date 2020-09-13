@@ -3,16 +3,21 @@ include mixins/user
 
 block content
     .formContainer
-        form(action="/search")
+        form(action="/search" method="post")
             input(type="email" placeholder="Searching By E-mail" name="term")
         
     .search__users
         if findUsers
             each user in findUsers
-                +userBlock({
-                    id:user.id,
-                    name:user.name,
-                    message:user.message
-                })
+                .userWrapper
+                    +userBlock({
+                        id:user.id,
+                        name:user.name,
+                        avatarUrl:user.avatarUrl,
+                        message:user.message
+                    })
+                    if !isFriend
+                        span.friendPlus  
+                            <i class="fas fa-plus"></i>   
         else
             h3 Cant not find friend

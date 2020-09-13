@@ -4,8 +4,12 @@ use nodejs, socketio
 
 # Planning
 
-1. Views -[ ] home
+1. Views -[x] home
 
--[ ] Login, Join
+-[x] Login, Join
 
 -[ ] Search
+
+2. Logic
+
+mongo db model - User, Rooms , Friends

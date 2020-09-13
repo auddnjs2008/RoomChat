@@ -1,4 +1,9 @@
 extends layouts/main
 
 block content
-    h3 This is rooms
+    if rooms.length
+        each room in rooms
+            .roomContainer
+                .roomImage=room.backbroundImg
+                span.roomTitle=room.title
+                span.roomMember=room.peoples.length

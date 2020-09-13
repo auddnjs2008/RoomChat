@@ -46,12 +46,17 @@ export const getSearch = (req, res) => {
   res.render("search", { subtitle: "search" });
 };
 
-export const postSearch = (req, res) => {
+export const postSearch = async (req, res) => {
   const {
-    query: { term: searching },
+    body: { term: searching },
   } = req;
 
-  let findUsers = users.filter((user) => user.email === searching);
-  findUsers = findUsers.length !== 0 ? findUsers : 0;
-  res.render("search", { subtitle: "search", searching, findUsers });
+  let findUsers = await User.find({ email: searching });
+  let friends = await User.findById(req.user.id).populate("friends");
+  // 이미 친구일경우 isFriend가 true여야 한다.
+  friends = friends.friends;
+  const isFriend = friends.some(
+    (friend) => friend.email === findUsers[0].email
+  );
+  res.render("search", { subtitle: "search", searching, findUsers, isFriend });
 };

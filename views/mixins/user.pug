@@ -2,6 +2,6 @@ mixin userBlock(user={})
     .userBlock
         a(href=`/user/${user.id}/profile`)
             .userAvatar
-                .userImage
+                .userImage=user.avatarUrl
                 .userName=user.name
             .userMessage=user.message

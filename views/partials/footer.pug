@@ -5,10 +5,10 @@ footer.footer
                 a(href="/")
                     <i class="fas fa-home"></i>
             li.friends
-                a(href="#")
+                a(href=`/user/${loggedUser.id}`)
                     <i class="fas fa-users"></i>
             li.chatRooms
-                a(href="#")
+                a(href=`/user/${loggedUser.id}/chat`)
                     <i class="far fa-comments"></i>
             li.search
                 a(href="/search")
