@@ -1,4 +1,22 @@
 extends layouts/main
 
 block content
-    h1 This is profile
+    .profileWrapper
+        if user.backgroundUrl
+            .backgroundWrapper
+                img(src=user.backgroundUrl)
+        else
+            .noBackground
+        if user.avatarUrl
+            .avatarWrapper
+                img(src=user.avatarUrl)
+        else
+            .userImage
+                <i class="fas fa-user-secret"></i>        
+        .userName=user.name
+        if user.message
+            .userMessage=user.message
+        else
+            .userMessage No message 
+        
+        a(href="#").sendBtn Send Message

@@ -17,6 +17,7 @@ const ROOMDETAIL = "/:id/chat/:roomid";
 
 const API = "/api";
 const ADDFriend = "/:id/addfriend";
+const MAKERoom = "/makeRoom";
 
 const routes = {
   home: HOME,
@@ -37,6 +38,7 @@ const routes = {
   roomdetail: ROOMDETAIL,
   api: API,
   addfriend: ADDFriend,
+  makeroom: MAKERoom,
 };
 
 export default routes;

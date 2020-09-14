@@ -1,8 +1,10 @@
 @import "/config/_variables.scss";
 @import "./config/reset.scss";
 @import "./pages/home.scss";
+@import "./pages/profile.scss";
 @import "./partials/form.scss";
 @import "./partials/footer.scss";
+@import "./partials/user.scss";
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -22,4 +24,15 @@ a {
 .gotoHome {
   font-size: 20px;
   font-weight: 700;
+}
+
+.userWrapper {
+  position: relative;
+  .friendPlus {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 30px;
+  }
 }

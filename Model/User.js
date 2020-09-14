@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema({
   email: String,
   avatarUrl: String,
   message: String,
+  backgroundUrl: String,
   friends: [
     {
       type: mongoose.Schema.Types.ObjectId,

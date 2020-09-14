@@ -153,6 +153,50 @@ table {
     .where .logoutButton button:nth-child(1) {
       margin-bottom: 5px; }
 
+.profileWrapper {
+  width: 100%;
+  max-width: 500px;
+  height: 80vh;
+  position: relative;
+  margin: 0 auto;
+  background-color: white; }
+  .profileWrapper .noBackground {
+    width: 100%;
+    height: 50%;
+    background-color: #ced6e0; }
+  .profileWrapper .userImage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #70a1ff;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .profileWrapper .userImage i {
+      font-size: 70px; }
+  .profileWrapper .userName {
+    margin-top: 60px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-align: center; }
+  .profileWrapper .userMessage {
+    text-align: center;
+    font-size: 18px; }
+  .profileWrapper .sendBtn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px;
+    border-radius: 20px;
+    background-color: #ced6e0;
+    text-align: center;
+    color: black; }
+
 .formContainer {
   width: 100%;
   display: flex;
@@ -181,8 +225,10 @@ table {
   position: fixed;
   padding: 20px;
   width: 100%;
+  max-width: 600px;
   bottom: 0;
-  left: 0; }
+  left: 50%;
+  transform: translateX(-50%); }
   .footer .footer__nav ul {
     width: 100%;
     display: flex;
@@ -191,6 +237,27 @@ table {
     background-color: #70a1ff;
     padding: 10px;
     border-radius: 20px; }
+
+.userBlock {
+  border-radius: 20px;
+  margin-bottom: 5px;
+  background-color: #ced6e0;
+  padding: 10px; }
+  .userBlock .userAvatar {
+    width: 55px;
+    text-align: center;
+    color: black; }
+    .userBlock .userAvatar .userImage {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background-color: #70a1ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 5px; }
+      .userBlock .userAvatar .userImage i {
+        font-size: 40px; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -207,3 +274,12 @@ a {
 .gotoHome {
   font-size: 20px;
   font-weight: 700; }
+
+.userWrapper {
+  position: relative; }
+  .userWrapper .friendPlus {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 30px; }

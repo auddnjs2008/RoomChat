@@ -29,8 +29,13 @@ export const userRooms = async (req, res) => {
 export const roomDetail = (req, res) =>
   res.render("roomdetail", { subtitle: "roomDetail" });
 
-export const userProfile = (req, res) =>
-  res.render("profile", { subtitle: "Profile" });
+export const userProfile = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  const user = await User.findById(id);
+  res.render("profile", { subtitle: "Profile", user });
+};
 
 export const postAddFriend = async (req, res) => {
   const {

@@ -1,0 +1,24 @@
+.userBlock {
+  border-radius: 20px;
+  margin-bottom: 5px;
+  background-color: #ced6e0;
+  padding: 10px;
+  .userAvatar {
+    width: 55px;
+    text-align: center;
+    color: black;
+    .userImage {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background-color: #70a1ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      i {
+        font-size: 40px;
+      }
+      margin-bottom: 5px;
+    }
+  }
+}
