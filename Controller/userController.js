@@ -19,15 +19,20 @@ export const userRooms = async (req, res) => {
     params: { id },
   } = req;
   try {
-    const rooms = await User.findById(id).populate("rooms");
+    const { rooms } = await User.findById(id).populate("rooms");
     res.render("userrooms", { subtitle: "rooms", rooms });
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);
   }
 };
-export const roomDetail = (req, res) =>
-  res.render("roomdetail", { subtitle: "roomDetail" });
+export const roomDetail = (req, res) => {
+  try {
+    res.render("roomdetail", { subtitle: "roomDetail" });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const userProfile = async (req, res) => {
   const {
@@ -35,6 +40,10 @@ export const userProfile = async (req, res) => {
   } = req;
   const user = await User.findById(id);
   res.render("profile", { subtitle: "Profile", user });
+};
+
+export const getEditProfile = (req, res) => {
+  res.render("editProfile", { subtitle: "EditProfile" });
 };
 
 export const postAddFriend = async (req, res) => {

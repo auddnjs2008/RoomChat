@@ -68,16 +68,23 @@ export const sendMessage = async (req, res) => {
   array.push(req.user.id);
   array.push(sendId);
   try {
-    const newRoom = await Room.create({
-      peoples: array,
-    });
-    newRoom.save();
-    const user = await User.findById(req.user.id);
-    const sendUser = await User.findById(sendId);
-    user.rooms.push(newRoom.id);
-    sendUser.rooms.push(newRoom.id);
+    //이미 있는 방이면 생성하지 않는다.
+    if (!(await Room.find({ peoples: array }))) {
+      const newRoom = await Room.create({
+        peoples: array,
+      });
+      newRoom.save();
+      const user = await User.findById(req.user.id);
+      const sendUser = await User.findById(sendId);
+      user.rooms.push(newRoom.id);
+      user.save();
+      sendUser.rooms.push(newRoom.id);
+      sendUser.save();
+    }
   } catch (error) {
     console.log(error);
     res.status(400);
+  } finally {
+    res.end();
   }
 };

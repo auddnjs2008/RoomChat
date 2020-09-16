@@ -1,5 +1,5 @@
 extends layouts/main
-
+include mixins/user
 block content
     .title
         h1 Room Chat
@@ -12,6 +12,21 @@ block content
                 button
                     a(href="/join") Join
         else
+            .homeProfile
+                if loggedUser.avatarUrl
+                    Img.userPicture(src=loggedUser.avatarUrl)
+                else
+                    .homeImage
+                        <i class="fas fa-user-secret"></i>
+                .homeName=loggedUser.name
+            .homeMessage=loggedUser.message
+
+
+
+            .editProfielBtn.logoutButton
+                button
+                    a(href=`/user/${loggedUser.id}/editprofile`) Edit Profile
+
             .logoutButton
                 button
                     a(href="/logout") Logged Out        

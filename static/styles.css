@@ -153,6 +153,25 @@ table {
     .where .logoutButton button:nth-child(1) {
       margin-bottom: 5px; }
 
+.where .homeProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .where .homeProfile .homeImage {
+    font-size: 80px;
+    width: 105px;
+    height: 105px;
+    background-color: #70a1ff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px; }
+  .where .homeProfile .homeName {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px; }
+
 .profileWrapper {
   width: 100%;
   max-width: 500px;

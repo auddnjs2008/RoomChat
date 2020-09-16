@@ -10,8 +10,9 @@ const SEARCH = "/search";
 const USER = "/user";
 const USERFRIENDS = "/:id";
 const USERPROFILE = "/:id/profile";
+const EDITPROFILE = "/:id/editprofile";
 const USERROOMS = "/:id/chat";
-const ROOMDETAIL = "/:id/chat/:roomid";
+const ROOMDETAIL = "/chat/:roomid";
 
 //API
 
@@ -28,14 +29,21 @@ const routes = {
   user: USER,
   userfriends: (id) => {
     if (id) {
-      return `/users/${id}`;
+      return `/user/${id}`;
     } else {
       return USERFRIENDS;
     }
   },
   userprofile: USERPROFILE,
+  editprofile: EDITPROFILE,
   userrooms: USERROOMS,
-  roomdetail: ROOMDETAIL,
+  roomdetail: (roomid) => {
+    if (roomid) {
+      return `/user/chat/${roomid}`;
+    } else {
+      return ROOMDETAIL;
+    }
+  },
   api: API,
   addfriend: ADDFriend,
   makeroom: MAKERoom,

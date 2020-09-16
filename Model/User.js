@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema({
   rooms: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Rooms",
+      ref: "Room",
     },
   ],
 });

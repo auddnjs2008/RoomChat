@@ -2,6 +2,7 @@ import "./db";
 import "./Model/User";
 import dotenv from "dotenv";
 import express from "express";
+import socketIo from "socket.io";
 import morgan from "morgan";
 import passport from "passport";
 import bodyParser from "body-parser";
@@ -15,10 +16,12 @@ import userRouter from "./routers/userRouter";
 import apiRouter from "./routers/apiRouter";
 import "./passport";
 import { localMiddleware } from "./localMiddleware";
-
+import socketController from "./socketController";
 dotenv.config();
 
 const app = express();
+app.locals.user = "";
+
 const CokieStore = MongoStore(session);
 
 const Port = process.env.PORT || 4000;
@@ -51,4 +54,12 @@ app.use(localMiddleware);
 app.use(routes.home, globalRouter);
 app.use(routes.user, userRouter);
 app.use(routes.api, apiRouter);
-app.listen(Port, handleListening);
+const server = app.listen(Port, handleListening);
+
+//소켓 설정
+
+const io = socketIo.listen(server);
+
+io.on("connection", (socket, io) => socketController(socket, io));
+
+export default app;

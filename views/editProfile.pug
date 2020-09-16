@@ -1,0 +1,9 @@
+extends layouts/main
+
+block content
+    .formContainer
+        form(action=`/user/${loggedUser.id}/editProfile`, method="post")
+            input(type="file" placeholder="Image" name="image")
+            input(type="text" placeholder="name" name="name")
+            input(type="text" placeholder="stateMessage" name="message")
+            input(type="submit" vale="Submit")
