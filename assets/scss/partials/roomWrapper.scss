@@ -1,0 +1,27 @@
+.roomContainer {
+  border-radius: 20px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ced6e0;
+  padding: 10px;
+  color: black;
+  .roomWrapper {
+    text-align: center;
+    .roomBasicImage {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 5px;
+      i {
+        font-size: 40px;
+        color: #1b9cfc;
+      }
+    }
+  }
+}

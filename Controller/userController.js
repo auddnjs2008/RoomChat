@@ -1,4 +1,5 @@
 import User from "../Model/User";
+import routes from "../routes";
 
 export const userFriends = async (req, res) => {
   const {
@@ -19,8 +20,12 @@ export const userRooms = async (req, res) => {
     params: { id },
   } = req;
   try {
-    const { rooms } = await User.findById(id).populate("rooms");
-    res.render("userrooms", { subtitle: "rooms", rooms });
+    const rooms = await User.find({ _id: id }).populate({
+      path: "rooms",
+      populate: { path: "peoples" },
+    });
+    const fixedRooms = rooms[0].rooms;
+    res.render("userrooms", { subtitle: "rooms", fixedRooms });
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);
@@ -44,6 +49,26 @@ export const userProfile = async (req, res) => {
 
 export const getEditProfile = (req, res) => {
   res.render("editProfile", { subtitle: "EditProfile" });
+};
+
+export const postEditProfile = async (req, res) => {
+  const {
+    body: { name, message },
+    files: { avatar, background },
+  } = req;
+
+  try {
+    const user = await User.findByIdAndUpdate(req.user.id, {
+      name: name ? name : req.user.name,
+      message: message ? message : "No message",
+      avatarUrl: avatar ? avatar[0].path : req.user.avatarUrl,
+      backgroundUrl: background ? background[0].path : req.user.backgroundUrl,
+    });
+    console.log(user);
+    res.redirect(routes.home);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const postAddFriend = async (req, res) => {

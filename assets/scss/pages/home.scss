@@ -37,6 +37,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: black;
+    .userPicture {
+      width: 105px;
+      height: 105px;
+    }
     .homeImage {
       font-size: 80px;
       width: 105px;

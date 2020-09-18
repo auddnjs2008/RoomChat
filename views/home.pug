@@ -12,9 +12,9 @@ block content
                 button
                     a(href="/join") Join
         else
-            .homeProfile
+            a.homeProfile(href=`/user/${loggedUser.id}/profile`)
                 if loggedUser.avatarUrl
-                    Img.userPicture(src=loggedUser.avatarUrl)
+                    img.userPicture(src=loggedUser.avatarUrl)
                 else
                     .homeImage
                         <i class="fas fa-user-secret"></i>

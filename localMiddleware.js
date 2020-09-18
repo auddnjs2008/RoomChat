@@ -1,4 +1,11 @@
+import multer from "multer";
 import app from "./server";
+
+const Images = multer({ dest: "uploads/images" });
+export const imageUpload = Images.fields([
+  { name: "avatar", maxCount: 1 },
+  { name: "background", maxCount: 1 },
+]);
 
 export const localMiddleware = (req, res, next) => {
   res.locals.loggedUser = req.user || null;

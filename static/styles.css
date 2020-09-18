@@ -156,7 +156,11 @@ table {
 .where .homeProfile {
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  color: black; }
+  .where .homeProfile .userPicture {
+    width: 105px;
+    height: 105px; }
   .where .homeProfile .homeImage {
     font-size: 80px;
     width: 105px;
@@ -179,11 +183,21 @@ table {
   position: relative;
   margin: 0 auto;
   background-color: white; }
+  .profileWrapper .backgroundWrapper {
+    width: 100%;
+    height: 50%; }
+    .profileWrapper .backgroundWrapper img {
+      width: 100%;
+      height: 100%; }
   .profileWrapper .noBackground {
     width: 100%;
     height: 50%;
     background-color: #ced6e0; }
-  .profileWrapper .userImage {
+  .profileWrapper .avatarWrapper img {
+    width: 90%;
+    height: 90%; }
+  .profileWrapper .userImage,
+  .profileWrapper .avatarWrapper {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -195,7 +209,8 @@ table {
     display: flex;
     justify-content: center;
     align-items: center; }
-    .profileWrapper .userImage i {
+    .profileWrapper .userImage i,
+    .profileWrapper .avatarWrapper i {
       font-size: 70px; }
   .profileWrapper .userName {
     margin-top: 60px;
@@ -215,6 +230,38 @@ table {
     background-color: #ced6e0;
     text-align: center;
     color: black; }
+
+.chatRoom {
+  width: 100%;
+  max-width: 600px;
+  height: 80vh;
+  overflow: auto;
+  border: 10px solid #eab543;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-bottom: 10px; }
+
+.chatFormWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center; }
+  .chatFormWrapper form {
+    width: 90%;
+    max-width: 600px; }
+    .chatFormWrapper form input {
+      border: none;
+      outline: none;
+      height: 40px;
+      font-size: 17px; }
+      .chatFormWrapper form input:nth-child(1) {
+        width: 80%;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px; }
+      .chatFormWrapper form input:nth-child(2) {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px; }
 
 .formContainer {
   width: 100%;
@@ -277,6 +324,30 @@ table {
       margin-bottom: 5px; }
       .userBlock .userAvatar .userImage i {
         font-size: 40px; }
+
+.roomContainer {
+  border-radius: 20px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ced6e0;
+  padding: 10px;
+  color: black; }
+  .roomContainer .roomWrapper {
+    text-align: center; }
+    .roomContainer .roomWrapper .roomBasicImage {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 5px; }
+      .roomContainer .roomWrapper .roomBasicImage i {
+        font-size: 40px;
+        color: #1b9cfc; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;

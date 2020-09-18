@@ -1,9 +1,27 @@
 extends layouts/main
 
 block content
-    if rooms.length
-        each room in rooms
-            .roomContainer
-                .roomImage=room.backbroundImg
+    if fixedRooms.length
+        each room in fixedRooms
+            a(href=`/user/chat/${room.id}`).roomContainer
+                if room.backgroundImg
+                    .roomImage
+                        img(src=room.backgroundImg)
+                else if room.peoples.length === 2
+                    .roomWrapper
+                        .roomBasicImage
+                            if room.peoples[1].avatarUrl
+                                img(src=room.peoples[1].avatarUrl)                
+                            else
+                                <i class="fas fa-tint"></i>             
+                        if(loggedUser.name !==room.peoples[1].name)
+                            .name=room.peoples[1].name
+                        else
+                            .name=room.peoples[0].name
+                else        
+                    .roomImages
+                        each people in room.peoples
+                            img(src=people.avatarUrl)
+                
                 span.roomTitle=room.title
                 span.roomMember=room.peoples.length
