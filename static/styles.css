@@ -160,7 +160,10 @@ table {
   color: black; }
   .where .homeProfile .userPicture {
     width: 105px;
-    height: 105px; }
+    height: 105px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px; }
   .where .homeProfile .homeImage {
     font-size: 80px;
     width: 105px;
@@ -194,8 +197,10 @@ table {
     height: 50%;
     background-color: #ced6e0; }
   .profileWrapper .avatarWrapper img {
-    width: 90%;
-    height: 90%; }
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; }
   .profileWrapper .userImage,
   .profileWrapper .avatarWrapper {
     position: absolute;
@@ -306,27 +311,43 @@ table {
 
 .userBlock {
   border-radius: 20px;
+  max-width: 600px;
+  margin: 0 auto;
   margin-bottom: 5px;
   background-color: #ced6e0;
   padding: 10px; }
-  .userBlock .userAvatar {
-    width: 55px;
-    text-align: center;
-    color: black; }
-    .userBlock .userAvatar .userImage {
+  .userBlock a {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center; }
+    .userBlock a .userAvatar {
       width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      background-color: #70a1ff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 5px; }
-      .userBlock .userAvatar .userImage i {
-        font-size: 40px; }
+      text-align: center;
+      color: black; }
+      .userBlock a .userAvatar .userPicture {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 4px; }
+      .userBlock a .userAvatar .userImage {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background-color: #70a1ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px; }
+        .userBlock a .userAvatar .userImage i {
+          font-size: 40px; }
 
 .roomContainer {
   border-radius: 20px;
+  margin-bottom: 5px;
+  max-width: 600px;
+  margin: 0 auto;
   margin-bottom: 5px;
   display: flex;
   align-items: center;
@@ -345,6 +366,11 @@ table {
       justify-content: center;
       align-items: center;
       margin-bottom: 5px; }
+      .roomContainer .roomWrapper .roomBasicImage img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover; }
       .roomContainer .roomWrapper .roomBasicImage i {
         font-size: 40px;
         color: #1b9cfc; }
@@ -366,7 +392,10 @@ a {
   font-weight: 700; }
 
 .userWrapper {
-  position: relative; }
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 5px; }
   .userWrapper .friendPlus {
     position: absolute;
     top: 50%;

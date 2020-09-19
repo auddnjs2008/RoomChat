@@ -41,6 +41,9 @@
     .userPicture {
       width: 105px;
       height: 105px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
     }
     .homeImage {
       font-size: 80px;

@@ -10,9 +10,11 @@ block content
                 else if room.peoples.length === 2
                     .roomWrapper
                         .roomBasicImage
-                            if room.peoples[1].avatarUrl
+                            if loggedUser.id === room.peoples[0].id && room.peoples[1].avatarUrl
                                 img(src=room.peoples[1].avatarUrl)                
-                            else
+                            else if loggedUser.id === room.peoples[1].id && room.peoples[0].avatarUrl
+                                img(src=room.peoples[0].avatarUrl)
+                            else    
                                 <i class="fas fa-tint"></i>             
                         if(loggedUser.name !==room.peoples[1].name)
                             .name=room.peoples[1].name

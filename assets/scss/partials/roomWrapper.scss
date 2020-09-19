@@ -1,6 +1,9 @@
 .roomContainer {
   border-radius: 20px;
   margin-bottom: 5px;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,6 +21,12 @@
       justify-content: center;
       align-items: center;
       margin-bottom: 5px;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      }
       i {
         font-size: 40px;
         color: #1b9cfc;

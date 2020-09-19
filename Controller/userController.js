@@ -25,6 +25,8 @@ export const userRooms = async (req, res) => {
       populate: { path: "peoples" },
     });
     const fixedRooms = rooms[0].rooms;
+    const realRooms = fixedRooms.peoples;
+    console.log(fixedRooms);
     res.render("userrooms", { subtitle: "rooms", fixedRooms });
   } catch (error) {
     console.log(error);

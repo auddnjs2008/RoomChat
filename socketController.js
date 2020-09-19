@@ -6,7 +6,9 @@ const socketController = (socket, io) => {
   //login한 유저가 친구한명한테 메세지 보내기
   socket.on("sendBtn", async ({ sendId }) => {
     const peoples = [app.locals.user, sendId];
+    console.log(peoples);
     const findRooms = await Room.find({ peoples });
+    console.log(findRooms);
     socket.emit("sendBtn", { id: findRooms[0].id });
   });
 };

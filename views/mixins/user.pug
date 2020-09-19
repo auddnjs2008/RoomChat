@@ -3,7 +3,7 @@ mixin userBlock(user={})
         a(href=`/user/${user.id}/profile`)
             .userAvatar
                 if user.avatarUrl
-                    Img.userPicture(src=user.avatarUrl)
+                    img.userPicture(src=user.avatarUrl)
                 else
                     .userImage
                         <i class="fas fa-user-secret"></i>

@@ -1,24 +1,39 @@
 .userBlock {
   border-radius: 20px;
+  max-width: 600px;
+  margin: 0 auto;
   margin-bottom: 5px;
   background-color: #ced6e0;
   padding: 10px;
-  .userAvatar {
-    width: 55px;
-    text-align: center;
-    color: black;
-    .userImage {
+  a {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    .userAvatar {
       width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      background-color: #70a1ff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      i {
-        font-size: 40px;
+      text-align: center;
+      color: black;
+      .userPicture {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 4px;
       }
-      margin-bottom: 5px;
+      .userImage {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background-color: #70a1ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i {
+          font-size: 40px;
+        }
+        margin-bottom: 5px;
+      }
     }
   }
 }

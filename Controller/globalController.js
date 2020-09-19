@@ -65,10 +65,13 @@ export const sendMessage = async (req, res) => {
   } = req;
   //누가  메세지를 보내면 방을 생성해야 한다.
   const array = [req.user.id, sendId];
+  const array2 = [sendId, req.user.id];
   try {
     //이미 있는 방이면 생성하지 않는다.
     const isRoom = await Room.find({ peoples: array });
-    if (isRoom.length === 0) {
+    const isRoom2 = await Room.find({ peoples: array2 });
+
+    if (isRoom.length === 0 && isRoom2.length === 0) {
       const newRoom = await Room.create({
         peoples: array,
       });
