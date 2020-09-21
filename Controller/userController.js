@@ -1,5 +1,8 @@
 import User from "../Model/User";
+import Room from "../Model/Rooms";
+import Message from "../Model/Message";
 import routes from "../routes";
+import app from "../server";
 
 export const userFriends = async (req, res) => {
   const {
@@ -33,9 +36,18 @@ export const userRooms = async (req, res) => {
     res.redirect(routes.home);
   }
 };
-export const roomDetail = (req, res) => {
+export const roomDetail = async (req, res) => {
+  const {
+    params: { roomid },
+  } = req;
+
   try {
-    res.render("roomdetail", { subtitle: "roomDetail" });
+    const room = await Room.find({ _id: roomid }).populate({
+      path: "messages",
+      populate: { path: "people" },
+    });
+    const messages = room[0].messages;
+    res.render("roomdetail", { subtitle: "roomDetail", room, messages });
   } catch (error) {
     console.log(error);
   }
@@ -81,6 +93,28 @@ export const postAddFriend = async (req, res) => {
     const user = await User.findById(req.user.id);
     user.friends.push(id);
     user.save();
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postMessage = async (req, res) => {
+  const {
+    body: { id, message },
+  } = req;
+  // 메세지가 200개이상일때 초기화하는 기능
+  try {
+    const Chat = await Message.create({
+      people: app.locals.user,
+      message,
+    });
+
+    const room = await Room.findById(id);
+    room.messages.push(Chat.id);
+    room.save();
   } catch (error) {
     console.log(error);
     res.status(400);

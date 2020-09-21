@@ -98,6 +98,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axio
 
 /***/ }),
 
+/***/ "./assets/js/chatScreen.js":
+/*!*********************************!*\
+  !*** ./assets/js/chatScreen.js ***!
+  \*********************************/
+/*! exports provided: receiveChat */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"receiveChat\", function() { return receiveChat; });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\nfunction asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); }); }; }\n\n\n\nvar _require = __webpack_require__(/*! ./socket */ \"./assets/js/socket.js\"),\n    initSockets = _require.initSockets,\n    getSocket = _require.getSocket;\n\nvar chatForm = document.querySelector(\".chatForm\");\nvar chatInput = document.querySelector(\".input\");\nvar comments = document.querySelector(\".comments\");\nvar socket;\n\nvar addChatMessage = function addChatMessage(message, name, avatarUrl) {\n  var li = document.createElement(\"li\");\n  li.innerHTML = avatarUrl ? \"<div class=\\\"messageProfile\\\"> <img src=\".concat(avatarUrl, \"></img> <div class=\\\"messageName\\\">\").concat(name, \"</div>\\n    <div class=\\\"messageContent\\\">\").concat(message, \"</div>\") : message;\n  comments.appendChild(li);\n};\n\nvar postChatMessage = /*#__PURE__*/function () {\n  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(message) {\n    var id, request;\n    return regeneratorRuntime.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            id = window.location.href.split(\"chat/\")[1].split(\"?\")[0];\n            request = axios__WEBPACK_IMPORTED_MODULE_0___default()({\n              method: \"post\",\n              url: \"/api/room/messages\",\n              data: {\n                id: id,\n                message: message\n              }\n            });\n\n          case 2:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee);\n  }));\n\n  return function postChatMessage(_x) {\n    return _ref.apply(this, arguments);\n  };\n}();\n\nvar socketMessage = function socketMessage(message) {\n  var id = window.location.href.split(\"chat/\")[1].split(\"?\")[0];\n  socket.on(\"connect\", function () {\n    console.log(message);\n    socket.emit(\"sendMessage\", {\n      id: id,\n      message: message\n    });\n    initSockets(socket);\n  });\n};\n\nvar receiveChat = function receiveChat(_ref2) {\n  var message = _ref2.message,\n      name = _ref2.name,\n      avatarUrl = _ref2.avatarUrl;\n  console.log(\"받은 메세지\");\n  console.log(message);\n  addChatMessage(message, name, avatarUrl);\n};\n\nvar handleChat = function handleChat(event) {\n  event.preventDefault();\n  var message = chatInput.value; //postChatMessage(message);\n\n  socketMessage(message);\n  addChatMessage(message);\n  chatInput.value = \"\";\n};\n\nvar init = function init() {\n  if (chatForm) {\n    socket = io(\"/\");\n  }\n\n  chatForm.addEventListener(\"submit\", handleChat);\n};\n\ninit();\n\n//# sourceURL=webpack:///./assets/js/chatScreen.js?");
+
+/***/ }),
+
 /***/ "./assets/js/main.js":
 /*!***************************!*\
   !*** ./assets/js/main.js ***!
@@ -106,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axio
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./assets/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _addFriend__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addFriend */ \"./assets/js/addFriend.js\");\n/* harmony import */ var _sendMessage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sendMessage */ \"./assets/js/sendMessage.js\");\n\n\n\n\n//# sourceURL=webpack:///./assets/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./assets/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _addFriend__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addFriend */ \"./assets/js/addFriend.js\");\n/* harmony import */ var _sendMessage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sendMessage */ \"./assets/js/sendMessage.js\");\n/* harmony import */ var _chatScreen__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./chatScreen */ \"./assets/js/chatScreen.js\");\n\n\n\n\n\n//# sourceURL=webpack:///./assets/js/main.js?");
 
 /***/ }),
 
@@ -126,11 +138,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!*****************************!*\
   !*** ./assets/js/socket.js ***!
   \*****************************/
-/*! exports provided: initSockets */
+/*! exports provided: getSocket, initSockets */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"initSockets\", function() { return initSockets; });\n/* harmony import */ var _sendMessage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sendMessage */ \"./assets/js/sendMessage.js\");\n\nvar socket = null;\nvar initSockets = function initSockets(aSocket) {\n  socket = aSocket;\n  socket.on(\"sendBtn\", _sendMessage__WEBPACK_IMPORTED_MODULE_0__[\"handleSendBtn\"]);\n};\n\n//# sourceURL=webpack:///./assets/js/socket.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getSocket\", function() { return getSocket; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"initSockets\", function() { return initSockets; });\n/* harmony import */ var _sendMessage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sendMessage */ \"./assets/js/sendMessage.js\");\n/* harmony import */ var _chatScreen__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./chatScreen */ \"./assets/js/chatScreen.js\");\n\n\nvar socket = null;\nvar getSocket = function getSocket() {\n  return socket;\n};\nvar initSockets = function initSockets(aSocket) {\n  socket = aSocket;\n  socket.on(\"sendBtn\", _sendMessage__WEBPACK_IMPORTED_MODULE_0__[\"handleSendBtn\"]);\n  socket.on(\"sendMessage\", _chatScreen__WEBPACK_IMPORTED_MODULE_1__[\"receiveChat\"]);\n};\n\n//# sourceURL=webpack:///./assets/js/socket.js?");
 
 /***/ }),
 

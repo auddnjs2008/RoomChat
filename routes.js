@@ -19,6 +19,7 @@ const ROOMDETAIL = "/chat/:roomid";
 const API = "/api";
 const ADDFriend = "/:id/addfriend";
 const MAKERoom = "/makeRoom";
+const ROOMMESSAGE = "/room/messages";
 
 const routes = {
   home: HOME,
@@ -47,6 +48,7 @@ const routes = {
   api: API,
   addfriend: ADDFriend,
   makeroom: MAKERoom,
+  roommessage: ROOMMESSAGE,
 };
 
 export default routes;
