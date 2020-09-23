@@ -8,6 +8,6 @@ block content
                     li=message.message
 
     .chatFormWrapper
-        form.chatForm(action=`/user/chat/${room.id}` method="post")
+        form.chatForm
             input.input(type="text", name="comment")
             input(type="submit",value="Submit")        

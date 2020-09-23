@@ -12,7 +12,7 @@ const USERFRIENDS = "/:id";
 const USERPROFILE = "/:id/profile";
 const EDITPROFILE = "/:id/editprofile";
 const USERROOMS = "/:id/chat";
-const ROOMDETAIL = "/chat/:roomid";
+const ROOMDETAIL = "/:id/chat/:roomid";
 
 //API
 
@@ -38,9 +38,9 @@ const routes = {
   userprofile: USERPROFILE,
   editprofile: EDITPROFILE,
   userrooms: USERROOMS,
-  roomdetail: (roomid) => {
-    if (roomid) {
-      return `/user/chat/${roomid}`;
+  roomdetail: (id, roomid) => {
+    if (roomid && id) {
+      return `/user/${id}/chat/${roomid}`;
     } else {
       return ROOMDETAIL;
     }

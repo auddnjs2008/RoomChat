@@ -29,7 +29,6 @@ export const userRooms = async (req, res) => {
     });
     const fixedRooms = rooms[0].rooms;
     const realRooms = fixedRooms.peoples;
-    console.log(fixedRooms);
     res.render("userrooms", { subtitle: "rooms", fixedRooms });
   } catch (error) {
     console.log(error);
@@ -47,6 +46,10 @@ export const roomDetail = async (req, res) => {
       populate: { path: "people" },
     });
     const messages = room[0].messages;
+
+    if (messages.length > 500)
+      await Room.findByIdAndUpdate({ _id: roomid }, { messages: [] });
+
     res.render("roomdetail", { subtitle: "roomDetail", room, messages });
   } catch (error) {
     console.log(error);
@@ -105,7 +108,7 @@ export const postMessage = async (req, res) => {
   const {
     body: { id, message },
   } = req;
-  // 메세지가 200개이상일때 초기화하는 기능
+
   try {
     const Chat = await Message.create({
       people: app.locals.user,

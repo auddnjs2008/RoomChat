@@ -1,54 +1,41 @@
 import axios from "axios";
-
 const { initSockets, getSocket } = require("./socket");
 
 const chatForm = document.querySelector(".chatForm");
 const chatInput = document.querySelector(".input");
 const comments = document.querySelector(".comments");
 
-let socket;
+let socket = null;
+
+const roomID = chatForm
+  ? window.location.href.split("chat/")[1].split("?")[0]
+  : "";
 
 const addChatMessage = (message, name, avatarUrl) => {
   const li = document.createElement("li");
+  li.className = "avatarMessage";
   li.innerHTML = avatarUrl
     ? `<div class="messageProfile"> <img src=${avatarUrl}></img> <div class="messageName">${name}</div>
-    <div class="messageContent">${message}</div>`
+    <div class="messageContent">${message}</div></div>`
     : message;
 
   comments.appendChild(li);
 };
 
-const postChatMessage = async (message) => {
-  const id = window.location.href.split("chat/")[1].split("?")[0];
-  const request = axios({
-    method: "post",
-    url: "/api/room/messages",
-    data: {
-      id,
-      message,
-    },
-  });
-};
-
 const socketMessage = (message) => {
-  const id = window.location.href.split("chat/")[1].split("?")[0];
-  socket.on("connect", () => {
-    console.log(message);
-    socket.emit("sendMessage", { id, message });
-    initSockets(socket);
-  });
+  const userId = window.location.href.split("/chat")[0].split("user/")[1];
+
+  socket.emit("sendMessage", { roomID, message, userId });
 };
 
 export const receiveChat = ({ message, name, avatarUrl }) => {
-  console.log("받은 메세지");
-  console.log(message);
+  console.log("받았다");
   addChatMessage(message, name, avatarUrl);
 };
 
 const handleChat = (event) => {
   event.preventDefault();
   const message = chatInput.value;
-  //postChatMessage(message);
   socketMessage(message);
   addChatMessage(message);
   chatInput.value = "";
@@ -57,8 +44,9 @@ const handleChat = (event) => {
 const init = () => {
   if (chatForm) {
     socket = io("/");
+    chatForm.addEventListener("submit", handleChat);
+    socket.on("receiveMessage", receiveChat);
   }
-  chatForm.addEventListener("submit", handleChat);
 };
 
 init();

@@ -62,6 +62,6 @@ const server = app.listen(Port, handleListening);
 
 const io = socketIo.listen(server);
 
-io.on("connection", (socket, io) => socketController(socket, io));
+io.on("connection", (socket) => socketController(socket, io));
 
 export default app;

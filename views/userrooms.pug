@@ -3,7 +3,7 @@ extends layouts/main
 block content
     if fixedRooms.length
         each room in fixedRooms
-            a(href=`/user/chat/${room.id}`).roomContainer
+            a(href=`/user/${loggedUser.id}/chat/${room.id}`).roomContainer
                 if room.backgroundImg
                     .roomImage
                         img(src=room.backgroundImg)

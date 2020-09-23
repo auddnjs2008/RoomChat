@@ -2,6 +2,7 @@ import routes from "../routes";
 import passport from "passport";
 import User from "../Model/User";
 import Room from "../Model/Rooms";
+import app from "../server";
 
 export const home = (req, res) => res.render("home", { subtitle: "home" });
 
