@@ -46,7 +46,7 @@ export const roomDetail = async (req, res) => {
       populate: { path: "people" },
     });
     const messages = room[0].messages;
-
+    console.log(messages);
     if (messages.length > 500)
       await Room.findByIdAndUpdate({ _id: roomid }, { messages: [] });
 

@@ -1,25 +1,37 @@
 import axios from "axios";
+import { getEnterSocket } from "./enterRoom";
+
 const { initSockets, getSocket } = require("./socket");
 
 const chatForm = document.querySelector(".chatForm");
+const chatRoom = document.querySelector(".chatRoom");
 const chatInput = document.querySelector(".input");
 const comments = document.querySelector(".comments");
-
-let socket = null;
 
 const roomID = chatForm
   ? window.location.href.split("chat/")[1].split("?")[0]
   : "";
 
+let socket = null;
+
 const addChatMessage = (message, name, avatarUrl) => {
   const li = document.createElement("li");
-  li.className = "avatarMessage";
-  li.innerHTML = avatarUrl
-    ? `<div class="messageProfile"> <img src=${avatarUrl}></img> <div class="messageName">${name}</div>
-    <div class="messageContent">${message}</div></div>`
-    : message;
 
+  if (name !== undefined) {
+    li.className = "InputNotMyMessage";
+    li.innerHTML = avatarUrl
+      ? `<div class="NotMymessageProfile"> <img src=${avatarUrl}></img> <div class="messageName">${name}</div></div>
+    <div class="messageContent">${message}</div>`
+      : `<div class="NotMymessageProfile">  <div class="iconWrapper"><i class="fas fa-user-alt"></i></div><div class="messageName">${name}</div></div>
+      <div class="messageContent">${message}</div>`;
+  } else {
+    //내 매세지일 경우
+    li.className = "InputMyMessage";
+
+    li.innerHTML = `<div class="Mymessage__content">${message}</div>`;
+  }
   comments.appendChild(li);
+  chatRoom.scrollTop = chatRoom.scrollHeight;
 };
 
 const socketMessage = (message) => {
@@ -29,7 +41,6 @@ const socketMessage = (message) => {
 };
 
 export const receiveChat = ({ message, name, avatarUrl }) => {
-  console.log("받았다");
   addChatMessage(message, name, avatarUrl);
 };
 
@@ -44,6 +55,8 @@ const handleChat = (event) => {
 const init = () => {
   if (chatForm) {
     socket = io("/");
+    socket.emit("socketJoin");
+    chatRoom.scrollTop = chatRoom.scrollHeight;
     chatForm.addEventListener("submit", handleChat);
     socket.on("receiveMessage", receiveChat);
   }

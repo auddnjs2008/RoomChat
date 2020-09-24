@@ -7,6 +7,64 @@
   border-radius: 20px;
   margin: 0 auto;
   margin-bottom: 10px;
+
+  .notMyMessage,
+  .InputNotMyMessage {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    .message__profile,
+    .NotMymessageProfile {
+      text-align: center;
+      .message__image,
+      img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 5px;
+      }
+      .message__icon,
+      .iconWrapper {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #2bcbba;
+        i {
+          font-size: 30px;
+          color: #16a085;
+        }
+      }
+      .message__name,
+      .messageName {
+        font-size: 15px;
+      }
+    }
+    .message__content,
+    .messageContent {
+      background-color: white;
+      padding: 5px;
+      border-radius: 10px;
+      border-top-left-radius: 0px;
+      margin-left: 5px;
+    }
+  }
+  .MyMessage,
+  .InputMyMessage {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    .Mymessage__content {
+      background-color: white;
+      padding: 5px;
+      border-radius: 10px;
+      border-top-right-radius: 0px;
+    }
+  }
 }
 .chatFormWrapper {
   width: 100%;

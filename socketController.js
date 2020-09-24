@@ -21,7 +21,6 @@ const socketController = (socket, io) => {
 
   // 1. 메세지가 왔을때  메세지 db를 생성하고 room에 저장해준다.
   socket.on("sendMessage", async ({ roomID, message, userId }) => {
-    console.log("메세지 받았당 서버에서");
     const Chat = await Message.create({
       people: userId,
       message,
@@ -31,23 +30,20 @@ const socketController = (socket, io) => {
     room.messages.push(Chat.id);
     room.save();
 
-    io.sockets.in(roomSocket).emit("receiveMessage", {
+    socket.broadcast.to(roomSocket).emit("receiveMessage", {
       message,
       name: user ? user.name : "",
       avatarUrl: user ? user.avatarUrl : "",
     });
-
-    // broadcast("receiveMessage", {
-    //   message,
-    //   name: user ? user.name : "",
-    //   avatarUrl: user ? user.avatarUrl : "",
-    // });
   });
 
   socket.on("enterRoom", ({ roomId }) => {
     roomSocket = roomId;
-    socket.room = roomId;
-    socket.join(roomId);
+  });
+
+  socket.on("socketJoin", () => {
+    socket.room = roomSocket;
+    socket.join(roomSocket);
   });
 };
 

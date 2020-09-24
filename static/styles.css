@@ -165,7 +165,7 @@ table {
     border-radius: 50%;
     margin-bottom: 10px; }
   .where .homeProfile .homeImage {
-    font-size: 80px;
+    font-size: 75px;
     width: 105px;
     height: 105px;
     background-color: #70a1ff;
@@ -245,6 +245,84 @@ table {
   border-radius: 20px;
   margin: 0 auto;
   margin-bottom: 10px; }
+  .chatRoom .notMyMessage,
+  .chatRoom .InputNotMyMessage {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; }
+    .chatRoom .notMyMessage .message__profile,
+    .chatRoom .notMyMessage .NotMymessageProfile,
+    .chatRoom .InputNotMyMessage .message__profile,
+    .chatRoom .InputNotMyMessage .NotMymessageProfile {
+      text-align: center; }
+      .chatRoom .notMyMessage .message__profile .message__image,
+      .chatRoom .notMyMessage .message__profile img,
+      .chatRoom .notMyMessage .NotMymessageProfile .message__image,
+      .chatRoom .notMyMessage .NotMymessageProfile img,
+      .chatRoom .InputNotMyMessage .message__profile .message__image,
+      .chatRoom .InputNotMyMessage .message__profile img,
+      .chatRoom .InputNotMyMessage .NotMymessageProfile .message__image,
+      .chatRoom .InputNotMyMessage .NotMymessageProfile img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 5px; }
+      .chatRoom .notMyMessage .message__profile .message__icon,
+      .chatRoom .notMyMessage .message__profile .iconWrapper,
+      .chatRoom .notMyMessage .NotMymessageProfile .message__icon,
+      .chatRoom .notMyMessage .NotMymessageProfile .iconWrapper,
+      .chatRoom .InputNotMyMessage .message__profile .message__icon,
+      .chatRoom .InputNotMyMessage .message__profile .iconWrapper,
+      .chatRoom .InputNotMyMessage .NotMymessageProfile .message__icon,
+      .chatRoom .InputNotMyMessage .NotMymessageProfile .iconWrapper {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #2bcbba; }
+        .chatRoom .notMyMessage .message__profile .message__icon i,
+        .chatRoom .notMyMessage .message__profile .iconWrapper i,
+        .chatRoom .notMyMessage .NotMymessageProfile .message__icon i,
+        .chatRoom .notMyMessage .NotMymessageProfile .iconWrapper i,
+        .chatRoom .InputNotMyMessage .message__profile .message__icon i,
+        .chatRoom .InputNotMyMessage .message__profile .iconWrapper i,
+        .chatRoom .InputNotMyMessage .NotMymessageProfile .message__icon i,
+        .chatRoom .InputNotMyMessage .NotMymessageProfile .iconWrapper i {
+          font-size: 30px;
+          color: #16a085; }
+      .chatRoom .notMyMessage .message__profile .message__name,
+      .chatRoom .notMyMessage .message__profile .messageName,
+      .chatRoom .notMyMessage .NotMymessageProfile .message__name,
+      .chatRoom .notMyMessage .NotMymessageProfile .messageName,
+      .chatRoom .InputNotMyMessage .message__profile .message__name,
+      .chatRoom .InputNotMyMessage .message__profile .messageName,
+      .chatRoom .InputNotMyMessage .NotMymessageProfile .message__name,
+      .chatRoom .InputNotMyMessage .NotMymessageProfile .messageName {
+        font-size: 15px; }
+    .chatRoom .notMyMessage .message__content,
+    .chatRoom .notMyMessage .messageContent,
+    .chatRoom .InputNotMyMessage .message__content,
+    .chatRoom .InputNotMyMessage .messageContent {
+      background-color: white;
+      padding: 5px;
+      border-radius: 10px;
+      border-top-left-radius: 0px;
+      margin-left: 5px; }
+  .chatRoom .MyMessage,
+  .chatRoom .InputMyMessage {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px; }
+    .chatRoom .MyMessage .Mymessage__content,
+    .chatRoom .InputMyMessage .Mymessage__content {
+      background-color: white;
+      padding: 5px;
+      border-radius: 10px;
+      border-top-right-radius: 0px; }
 
 .chatFormWrapper {
   width: 100%;

@@ -53,10 +53,13 @@ export const postSearch = async (req, res) => {
   let findUsers = await User.find({ email: searching });
   let friends = await User.findById(req.user.id).populate("friends");
   // 이미 친구일경우 isFriend가 true여야 한다.
+  // 자기 자신일 경우에도 true 여야 한다.
   friends = friends.friends;
-  const isFriend = friends.some(
-    (friend) => friend.email === findUsers[0].email
-  );
+  const isFriend = friends.some((friend) => {
+    const Myfriend = friend.email === findUsers[0].email;
+    const IsMe = req.user.id === findUsers[0].id;
+    if (IsMe === true || Myfriend === true) return true;
+  });
   res.render("search", { subtitle: "search", searching, findUsers, isFriend });
 };
 
