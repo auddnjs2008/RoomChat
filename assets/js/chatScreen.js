@@ -47,9 +47,11 @@ export const receiveChat = ({ message, name, avatarUrl }) => {
 const handleChat = (event) => {
   event.preventDefault();
   const message = chatInput.value;
-  socketMessage(message);
-  addChatMessage(message);
-  chatInput.value = "";
+  if (message !== "") {
+    socketMessage(message);
+    addChatMessage(message);
+    chatInput.value = "";
+  }
 };
 
 const init = () => {

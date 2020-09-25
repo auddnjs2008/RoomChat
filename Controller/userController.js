@@ -27,9 +27,13 @@ export const userRooms = async (req, res) => {
       path: "rooms",
       populate: { path: "peoples" },
     });
+    let lastMessages = await User.find({ _id: id }).populate({
+      path: "rooms",
+      populate: { path: "messages" },
+    });
     const fixedRooms = rooms[0].rooms;
-    const realRooms = fixedRooms.peoples;
-    res.render("userrooms", { subtitle: "rooms", fixedRooms });
+    lastMessages = lastMessages[0].rooms;
+    res.render("userrooms", { subtitle: "rooms", fixedRooms, lastMessages });
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);
@@ -46,7 +50,7 @@ export const roomDetail = async (req, res) => {
       populate: { path: "people" },
     });
     const messages = room[0].messages;
-    console.log(messages);
+
     if (messages.length > 500)
       await Room.findByIdAndUpdate({ _id: roomid }, { messages: [] });
 
@@ -81,7 +85,7 @@ export const postEditProfile = async (req, res) => {
       avatarUrl: avatar ? avatar[0].path : req.user.avatarUrl,
       backgroundUrl: background ? background[0].path : req.user.backgroundUrl,
     });
-    console.log(user);
+
     res.redirect(routes.home);
   } catch (error) {
     console.log(error);

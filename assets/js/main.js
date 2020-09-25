@@ -3,3 +3,4 @@ import "./addFriend";
 import "./sendMessage";
 import "./chatScreen";
 import "./enterRoom";
+import "./roomLatestMessage";

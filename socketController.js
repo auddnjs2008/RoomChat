@@ -5,7 +5,7 @@ import User from "./Model/User";
 import app from "./server";
 
 let roomSocket;
-
+let showMessage;
 const socketController = (socket, io) => {
   const broadcast = (event, data) => socket.broadcast.emit(event, data);
 
@@ -29,12 +29,15 @@ const socketController = (socket, io) => {
     const user = await User.findById(userId);
     room.messages.push(Chat.id);
     room.save();
-
+    showMessage = message;
     socket.broadcast.to(roomSocket).emit("receiveMessage", {
       message,
       name: user ? user.name : "",
       avatarUrl: user ? user.avatarUrl : "",
     });
+
+    // 메세지가 왔을 때  방 겉에  제일 마지막 메세지를 표시해준다.
+    broadcast("showMessage", { showMessage, roomSocket });
   });
 
   socket.on("enterRoom", ({ roomId }) => {

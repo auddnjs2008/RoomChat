@@ -2,7 +2,7 @@ extends layouts/main
 
 block content
     if fixedRooms.length
-        each room in fixedRooms
+        each room,index in fixedRooms
             a(href=`/user/${loggedUser.id}/chat/${room.id}`).roomContainer
                 if room.backgroundImg
                     .roomImage
@@ -24,6 +24,11 @@ block content
                     .roomImages
                         each people in room.peoples
                             img(src=people.avatarUrl)
+                        span.roomTitle=room.title
                 
-                span.roomTitle=room.title
-                span.roomMember=room.peoples.length
+                if lastMessages[index].messages[room.messages.length-1].message.length <15
+                    span.showMessage=lastMessages[index].messages[room.messages.length-1].message
+                else
+                    span.showMessage=lastMessages[index].messages[room.messages.length-1].message.slice(0,14)+"....."
+                if(room.peoples.length !== 2)
+                    span.roomMember=room.peoples.length
