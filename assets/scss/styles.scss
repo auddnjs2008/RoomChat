@@ -15,6 +15,10 @@ body {
   padding: 20px;
   background-color: #10254d;
   background-image: url("/uploads/images/stardust.png");
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 * {

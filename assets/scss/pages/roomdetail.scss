@@ -108,14 +108,88 @@
   }
 }
 
-.chatFriendsForm {
-  width: 500px;
-  height: 500px;
+.modalAnimation {
+  @keyframes modal {
+    0% {
+      top: 0;
+      right: 0;
+      width: 0px;
+      height: 0px;
+      transform: translate(50%, -50%);
+      opacity: 0;
+    }
+    50% {
+      top: 25%;
+      right: 25%;
+      width: 250px;
+      height: 250px;
+      transform: translate(50%, -50%);
+    }
+    100% {
+      top: 50%;
+      right: 50%;
+      width: 500px;
+      height: 500px;
+      transform: translate(50%, -50%);
+      opacity: 1;
+    }
+  }
+  animation: modal 0.5s linear forwards;
+}
 
+.modalCloseAnimation {
+  @keyframes modalClose {
+    0% {
+      top: 50%;
+      right: 50%;
+      width: 500px;
+      height: 500px;
+      transform: translate(50%, -50%);
+    }
+    100% {
+      top: 0;
+      right: 0;
+      width: 0px;
+      height: 0px;
+      opacity: 0;
+      //transform: translate(-50%, -50%);
+      //
+    }
+  }
+  animation: modalClose 0.5s linear forwards;
+}
+
+.inputModal {
+  @keyframes inputModal {
+    0% {
+      width: 0px;
+      height: 0px;
+    }
+    100% {
+      width: 220px;
+      height: 50px;
+    }
+  }
+  animation: inputModal 0.5s linear forwards;
+}
+
+.inputCloseModal {
+  @keyframes inputCloseModal {
+    0% {
+      width: 220px;
+      height: 50px;
+    }
+    100% {
+      width: 0px;
+      height: 0px;
+    }
+  }
+  animation: inputCloseModal 0.5s linear forwards;
+}
+
+.chatFriendsForm {
+  display: none;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: white;
   ul.plusFriends {
     width: 100%;
@@ -126,18 +200,34 @@
     align-items: center;
     .chatAddFriend {
       text-align: center;
-
-      i {
-        font-size: 30px;
-        border: 1px solid black;
-        color: #ffa502;
-        padding: 5px;
+      .icon {
+        background-color: #ffa502;
         border-radius: 50%;
         margin-bottom: 5px;
+        padding: 5px;
+        i {
+          font-size: 30px;
+          color: black;
+          padding: 5px;
+        }
       }
     }
     i.chatAddBtn {
       font-size: 30px;
     }
+  }
+
+  .closeBtn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    border: 1px solid black;
+    background-color: #ecf0f1;
+    font-weight: 600;
+    width: 60px;
+    padding: 5px;
+    cursor: pointer;
   }
 }
