@@ -1,9 +1,8 @@
 .userBlock {
-  border-radius: 20px;
   max-width: 600px;
   margin: 0 auto;
   margin-bottom: 5px;
-  background-color: #ced6e0;
+  border-bottom: 1px solid #dfe6e9;
   padding: 10px;
   a {
     display: flex;
@@ -34,6 +33,27 @@
         }
         margin-bottom: 5px;
       }
+      .userName {
+        font-weight: 400;
+      }
+    }
+    .userMessage {
+      color: black;
+      padding: 10px;
+      border-radius: 10px;
+      border-top-left-radius: 0px;
+      background-color: #f1c40f;
+      color: black;
+      font-weight: 600;
     }
   }
+}
+
+.useresWrapper {
+  background-color: white;
+  max-width: 600px;
+  border-radius: 20px;
+  height: 85vh;
+  overflow: auto;
+  margin: 0 auto;
 }

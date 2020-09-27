@@ -2,12 +2,13 @@ extends layouts/main
 include mixins/user
 
 block content
-    if friends.length
-        each friend in friends
-            +userBlock({
-                    id:friend.id,
-                    name:friend.name,
-                    message:friend.message,
-                    avatarUrl:friend.avatarUrl
-                })
+    .useresWrapper
+        if friends.length
+            each friend in friends
+                +userBlock({
+                        id:friend.id,
+                        name:friend.name,
+                        message:friend.message,
+                        avatarUrl:friend.avatarUrl
+                    })
             

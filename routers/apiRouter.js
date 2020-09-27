@@ -1,6 +1,10 @@
 import express from "express";
 import { sendMessage } from "../Controller/globalController";
-import { postAddFriend, postMessage } from "../Controller/userController";
+import {
+  chatAddFriend,
+  postAddFriend,
+  postMessage,
+} from "../Controller/userController";
 import routes from "../routes";
 
 const apiRouter = express.Router();

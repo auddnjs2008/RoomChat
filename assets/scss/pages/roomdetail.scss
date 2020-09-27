@@ -3,7 +3,11 @@
   max-width: 600px;
   height: 80vh;
   overflow: auto;
-  border: 10px solid #eab543;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  border: 3px solid #eab543;
+  padding: 10px;
   border-radius: 20px;
   margin: 0 auto;
   margin-bottom: 10px;
@@ -72,10 +76,10 @@
   justify-content: center;
   margin: 0 auto;
   text-align: center;
+
   form {
     width: 90%;
     max-width: 600px;
-
     input {
       border: none;
       outline: none;
@@ -91,6 +95,49 @@
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
       }
+    }
+  }
+}
+.chatFriendsPlus {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: #eab543;
+  i {
+    font-size: 50px;
+  }
+}
+
+.chatFriendsForm {
+  width: 500px;
+  height: 500px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  ul.plusFriends {
+    width: 100%;
+
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .chatAddFriend {
+      text-align: center;
+
+      i {
+        font-size: 30px;
+        border: 1px solid black;
+        color: #ffa502;
+        padding: 5px;
+        border-radius: 50%;
+        margin-bottom: 5px;
+      }
+    }
+    i.chatAddBtn {
+      font-size: 30px;
     }
   }
 }

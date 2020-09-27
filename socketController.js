@@ -48,6 +48,11 @@ const socketController = (socket, io) => {
     socket.room = roomSocket;
     socket.join(roomSocket);
   });
+
+  socket.on("chatFindFriend", async ({ findValue }) => {
+    const findFriend = await User.find({ email: findValue });
+    socket.emit("findFriend", { findFriend });
+  });
 };
 
 export default socketController;
