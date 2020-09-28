@@ -57,6 +57,7 @@ const handleChat = (event) => {
 const init = () => {
   if (chatForm) {
     socket = io("/");
+    initSockets(socket);
     socket.emit("socketJoin");
     chatRoom.scrollTop = chatRoom.scrollHeight;
     chatForm.addEventListener("submit", handleChat);

@@ -426,24 +426,31 @@ table {
   position: absolute;
   background-color: white; }
   .chatFriendsForm ul.plusFriends {
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center; }
-    .chatFriendsForm ul.plusFriends .chatAddFriend {
-      text-align: center; }
-      .chatFriendsForm ul.plusFriends .chatAddFriend .icon {
-        background-color: #ffa502;
-        border-radius: 50%;
-        margin-bottom: 5px;
-        padding: 5px; }
-        .chatFriendsForm ul.plusFriends .chatAddFriend .icon i {
-          font-size: 30px;
-          color: black;
+    width: 100%; }
+    .chatFriendsForm ul.plusFriends li {
+      width: 100%;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .chatFriendsForm ul.plusFriends li .chatAddFriend {
+        text-align: center; }
+        .chatFriendsForm ul.plusFriends li .chatAddFriend img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover; }
+        .chatFriendsForm ul.plusFriends li .chatAddFriend .icon {
+          background-color: #ffa502;
+          border-radius: 50%;
+          margin-bottom: 5px;
           padding: 5px; }
-    .chatFriendsForm ul.plusFriends i.chatAddBtn {
-      font-size: 30px; }
+          .chatFriendsForm ul.plusFriends li .chatAddFriend .icon i {
+            font-size: 30px;
+            color: black;
+            padding: 5px; }
+      .chatFriendsForm ul.plusFriends li i.chatAddBtn {
+        font-size: 30px; }
   .chatFriendsForm .closeBtn {
     position: absolute;
     bottom: 20px;
@@ -615,7 +622,8 @@ table {
       color: black; }
       .roomGridWrapper .roomsOutWrapper .roomContainer .roomWrapper {
         text-align: center;
-        display: flex; }
+        display: flex;
+        pointer-events: none; }
         .roomGridWrapper .roomsOutWrapper .roomContainer .roomWrapper .roomBasicImage {
           width: 55px;
           height: 55px;
@@ -634,6 +642,7 @@ table {
             font-size: 40px;
             color: #1b9cfc; }
       .roomGridWrapper .roomsOutWrapper .roomContainer .showMessage {
+        pointer-events: none;
         position: absolute;
         text-align: center;
         width: 100%;

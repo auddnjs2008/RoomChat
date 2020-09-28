@@ -1,3 +1,5 @@
+const { getSocket } = require("./socket");
+
 const chatRoom = document.querySelector(".chatRoom");
 const chatInputForm = document.querySelector(".chatFormWrapper");
 const formContainer = document.querySelector(".chatFriendsForm");
@@ -7,10 +9,15 @@ const chatAddUl = document.querySelector(".plusFriends");
 const searchFriend = document.querySelector(".chatFriendsPlus");
 const closeBtn = document.querySelector(".closeBtn");
 
+let socket = getSocket();
+let Friend = null;
+
 const foundFriend = (findValue) => {
   if (findValue.length !== 0) {
+    Friend = findValue;
     chatAddUl.innerText = "";
-    chatAddUl.innerHTML = findValue[0].avatarUrl
+    const li = document.createElement("li");
+    li.innerHTML = findValue[0].avatarUrl
       ? `<div class="chatAddFriend">
             <img src=${findValue[0].avatarUrl} />
             <div class="chatAddName"/>${findValue[0].name}</div>
@@ -21,22 +28,43 @@ const foundFriend = (findValue) => {
         <div class="chatAddName"/>${findValue[0].name}</div> </div>
         <i class="fas fa-plus-circle chatAddBtn"></i>
         `;
+    chatAddUl.appendChild(li);
+    const chatAddBtn = li.querySelector(".chatAddBtn");
+    chatAddBtn.addEventListener("click", handleInvite);
   } else {
     chatAddUl.innerText = "Can't Find";
   }
 };
 
+const plusAlarm = (message) => {
+  const alarmLi = document.createElement("li");
+  alarmLi.className = "messageAlarm";
+  alarmLi.innerText = message;
+  const Ul = chatRoom.querySelector("ul");
+  Ul.appendChild(alarmLi);
+};
+
+// 채팅창에 플러스 버튼을 눌렀을때 이벤트
 const chatAddSocket = (findValue) => {
-  const socket = io("/");
   socket.emit("chatFindFriend", { findValue });
   socket.on("findFriend", ({ findFriend }) => foundFriend(findFriend));
 };
 
+// 친구 초대창에서 친구 플러스 버튼을 눌렀을 때
+const handleInvite = (e) => {
+  socket.emit("chatPlusFriend", { Friend });
+};
+
+// 찾을 이메일을 검색했을 때
 const handleChatAdd = (e) => {
   e.preventDefault();
+  if (chatAddUl.firstChild) chatAddUl.removeChild(chatAddUl.firstChild);
   const findValue = chatAddInput.value;
   chatAddInput.value = "";
   chatAddSocket(findValue);
+
+  //friendAddBtn.addEventListener("click", handleInvite);
+  // 친구 초대 버튼을 누르면 발생
 };
 
 const handleAddClick = () => {
@@ -65,7 +93,10 @@ const handleCloseClick = () => {
 };
 
 const init = () => {
-  if (chatAddForm) chatAddForm.addEventListener("submit", handleChatAdd);
+  if (chatAddForm) {
+    chatAddForm.addEventListener("submit", handleChatAdd);
+    socket.on("chatPlusFriendAlarm", ({ message }) => plusAlarm(message));
+  }
   if (searchFriend) searchFriend.addEventListener("click", handleAddClick);
   if (closeBtn) closeBtn.addEventListener("click", handleCloseClick);
 };

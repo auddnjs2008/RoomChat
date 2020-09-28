@@ -193,27 +193,36 @@
   background-color: white;
   ul.plusFriends {
     width: 100%;
+    li {
+      width: 100%;
 
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .chatAddFriend {
-      text-align: center;
-      .icon {
-        background-color: #ffa502;
-        border-radius: 50%;
-        margin-bottom: 5px;
-        padding: 5px;
-        i {
-          font-size: 30px;
-          color: black;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .chatAddFriend {
+        text-align: center;
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        .icon {
+          background-color: #ffa502;
+          border-radius: 50%;
+          margin-bottom: 5px;
           padding: 5px;
+          i {
+            font-size: 30px;
+            color: black;
+            padding: 5px;
+          }
         }
       }
-    }
-    i.chatAddBtn {
-      font-size: 30px;
+      i.chatAddBtn {
+        font-size: 30px;
+      }
     }
   }
 

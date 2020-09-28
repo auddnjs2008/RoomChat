@@ -13,7 +13,7 @@ const ul = footer ? footer.querySelector("ul") : "";
 const li = ul ? ul.querySelectorAll("li") : "";
 
 const nowUrl = window.location.href;
-console.log(nowUrl);
+
 const init = () => {
   li.forEach((item) => {
     const a = item.querySelector("a");

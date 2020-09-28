@@ -53,6 +53,14 @@ const socketController = (socket, io) => {
     const findFriend = await User.find({ email: findValue });
     socket.emit("findFriend", { findFriend });
   });
+
+  // 친구초대 됬다는 알림이랑 db에 저장되야한다.
+  socket.on("chatPlusFriend", ({ Friend }) => {
+    const message = `${Friend[0].name}님이 초대되었습니다`;
+
+    //message가 db에 저장,
+    io.sockets.in(roomSocket).emit("chatPlusFriendAlarm", { message });
+  });
 };
 
 export default socketController;

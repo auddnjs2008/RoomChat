@@ -50,7 +50,7 @@
       .roomWrapper {
         text-align: center;
         display: flex;
-
+        pointer-events: none;
         .roomBasicImage {
           width: 55px;
           height: 55px;
@@ -75,6 +75,7 @@
       }
 
       .showMessage {
+        pointer-events: none;
         position: absolute;
 
         text-align: center;
