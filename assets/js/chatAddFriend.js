@@ -1,4 +1,5 @@
 const { getSocket } = require("./socket");
+import { addUsers } from "./chatUsersList";
 
 const chatRoom = document.querySelector(".chatRoom");
 const chatInputForm = document.querySelector(".chatFormWrapper");
@@ -36,12 +37,13 @@ const foundFriend = (findValue) => {
   }
 };
 
-const plusAlarm = (message) => {
+const plusAlarm = (message, Friend) => {
   const alarmLi = document.createElement("li");
   alarmLi.className = "messageAlarm";
   alarmLi.innerText = message;
   const Ul = chatRoom.querySelector("ul");
   Ul.appendChild(alarmLi);
+  addUsers(Friend[0].avatarUrl, Friend[0].name);
 };
 
 // 채팅창에 플러스 버튼을 눌렀을때 이벤트
@@ -52,7 +54,9 @@ const chatAddSocket = (findValue) => {
 
 // 친구 초대창에서 친구 플러스 버튼을 눌렀을 때
 const handleInvite = (e) => {
-  socket.emit("chatPlusFriend", { Friend });
+  e.target.style.display = "none";
+  const location = window.location.href.split("chat/")[1];
+  socket.emit("chatPlusFriend", { Friend, location });
 };
 
 // 찾을 이메일을 검색했을 때
@@ -62,9 +66,6 @@ const handleChatAdd = (e) => {
   const findValue = chatAddInput.value;
   chatAddInput.value = "";
   chatAddSocket(findValue);
-
-  //friendAddBtn.addEventListener("click", handleInvite);
-  // 친구 초대 버튼을 누르면 발생
 };
 
 const handleAddClick = () => {
@@ -81,7 +82,6 @@ const handleAddClick = () => {
 const handleCloseClick = () => {
   formContainer.classList.remove("modalAnimation");
   formContainer.classList.add("modalCloseAnimation");
-  //formContainer.style.display = "none";
   chatAddInput.classList.remove("inputModal");
   chatAddInput.classList.add("inputCloseModal");
 
@@ -95,7 +95,9 @@ const handleCloseClick = () => {
 const init = () => {
   if (chatAddForm) {
     chatAddForm.addEventListener("submit", handleChatAdd);
-    socket.on("chatPlusFriendAlarm", ({ message }) => plusAlarm(message));
+    socket.on("chatPlusFriendAlarm", ({ message, Friend }) =>
+      plusAlarm(message, Friend)
+    );
   }
   if (searchFriend) searchFriend.addEventListener("click", handleAddClick);
   if (closeBtn) closeBtn.addEventListener("click", handleCloseClick);

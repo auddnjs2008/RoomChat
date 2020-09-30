@@ -5,19 +5,23 @@ block content
         ul.comments
             if(loggedUser && messages.length !==0)
                 each message in messages
-                    if(message.people.id !== loggedUser.id)
-                        li.notMyMessage
-                            .message__profile
-                                    if message.people.avatarUrl
-                                        img(src=message.people.avatarUrl).message__image 
-                                    else
-                                        .message__icon
-                                            <i class="fas fa-user-alt"></i>
-                                    .message__name=message.people.name
-                            .message__content=message.message
+                    if(message.people)
+                        if(message.people.id !== loggedUser.id)
+                            li.notMyMessage
+                                .message__profile
+                                        if message.people.avatarUrl
+                                            img(src=message.people.avatarUrl).message__image 
+                                        else
+                                            .message__icon
+                                                <i class="fas fa-user-alt"></i>
+                                        .message__name=message.people.name
+                                .message__content=message.message
+                        else if (message.people.id === loggedUser.id)
+                            li.MyMessage
+                                .Mymessage__content=message.message
                     else
-                        li.MyMessage
-                            .Mymessage__content=message.message
+                        li.notification=message.message    
+    
     .chatFormWrapper
         form.chatForm
             input.input(type="text", name="comment")
@@ -25,7 +29,11 @@ block content
 
     .chatFriendsPlus
         <i class="fas fa-plus-circle"></i>
+        
     .chatFriendsForm
+        .chatUsers
+            .chatUsers__title  Chat Users
+            ul.chatUsers__users
         .formContainer
             form.chatFriends__form
                 input(type="email" placeholder="Searching By E-mail" name="term") 

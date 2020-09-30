@@ -55,11 +55,28 @@ const socketController = (socket, io) => {
   });
 
   // 친구초대 됬다는 알림이랑 db에 저장되야한다.
-  socket.on("chatPlusFriend", ({ Friend }) => {
+  socket.on("chatPlusFriend", async ({ Friend, location }) => {
     const message = `${Friend[0].name}님이 초대되었습니다`;
+    const room = await Room.findById(location);
+    //message저장
+    const alarmMessage = await Message.create({ message });
+    room.messages.push(alarmMessage);
+    room.save();
+    //room에  찾은 사람 저장
 
-    //message가 db에 저장,
-    io.sockets.in(roomSocket).emit("chatPlusFriendAlarm", { message });
+    room.peoples.push(Friend[0]._id);
+    room.save();
+    //찾은 사람에 이 방 아이디를 저장
+    const user = await User.findById(Friend[0]._id);
+    user.rooms.push(room.id);
+    user.save();
+    io.sockets.in(roomSocket).emit("chatPlusFriendAlarm", { message, Friend });
+  });
+
+  // 현재 채팅방 사용자 목록 찾기
+  socket.on("findList", async ({ location }) => {
+    const room = await Room.findById(location).populate("peoples");
+    socket.emit("foundList", { peoples: room.peoples });
   });
 };
 

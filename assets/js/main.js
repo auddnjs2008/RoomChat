@@ -5,7 +5,7 @@ import "./chatScreen";
 import "./enterRoom";
 import "./roomLatestMessage";
 import "./chatAddFriend";
-
+import "./chatUsersList";
 //footer 설정
 
 const footer = document.querySelector(".footer__nav");
