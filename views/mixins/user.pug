@@ -8,4 +8,5 @@ mixin userBlock(user={})
                     .userImage
                         <i class="fas fa-user-alt"></i>
                 .userName=user.name
-            .userMessage=user.message
+            if(user.message)    
+                .userMessage=user.message

@@ -6,6 +6,7 @@ import "./enterRoom";
 import "./roomLatestMessage";
 import "./chatAddFriend";
 import "./chatUsersList";
+import "./roomsDesignChange";
 //footer 설정
 
 const footer = document.querySelector(".footer__nav");

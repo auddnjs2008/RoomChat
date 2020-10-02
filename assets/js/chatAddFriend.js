@@ -10,11 +10,13 @@ const chatAddUl = document.querySelector(".plusFriends");
 const searchFriend = document.querySelector(".chatFriendsPlus");
 const closeBtn = document.querySelector(".closeBtn");
 
+const location = window.location.href.split("chat/")[1];
+
 let socket = getSocket();
 let Friend = null;
 
-const foundFriend = (findValue) => {
-  if (findValue.length !== 0) {
+const foundFriend = (findValue, isPeople) => {
+  if (findValue.length !== 0 && !isPeople) {
     Friend = findValue;
     chatAddUl.innerText = "";
     const li = document.createElement("li");
@@ -32,8 +34,10 @@ const foundFriend = (findValue) => {
     chatAddUl.appendChild(li);
     const chatAddBtn = li.querySelector(".chatAddBtn");
     chatAddBtn.addEventListener("click", handleInvite);
-  } else {
+  } else if (findValue.length === 0) {
     chatAddUl.innerText = "Can't Find";
+  } else if (isPeople) {
+    chatAddUl.innerText = "The User is already in this Chat Room";
   }
 };
 
@@ -48,14 +52,15 @@ const plusAlarm = (message, Friend) => {
 
 // 채팅창에 플러스 버튼을 눌렀을때 이벤트
 const chatAddSocket = (findValue) => {
-  socket.emit("chatFindFriend", { findValue });
-  socket.on("findFriend", ({ findFriend }) => foundFriend(findFriend));
+  socket.emit("chatFindFriend", { findValue, location });
+  socket.on("findFriend", ({ findFriend, isPeople }) =>
+    foundFriend(findFriend, isPeople)
+  );
 };
 
 // 친구 초대창에서 친구 플러스 버튼을 눌렀을 때
 const handleInvite = (e) => {
   e.target.style.display = "none";
-  const location = window.location.href.split("chat/")[1];
   socket.emit("chatPlusFriend", { Friend, location });
 };
 

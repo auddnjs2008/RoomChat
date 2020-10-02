@@ -37,6 +37,7 @@ const socketController = (socket, io) => {
     });
 
     // 메세지가 왔을 때  방 겉에  제일 마지막 메세지를 표시해준다.
+
     broadcast("showMessage", { showMessage, roomSocket });
   });
 
@@ -49,9 +50,15 @@ const socketController = (socket, io) => {
     socket.join(roomSocket);
   });
 
-  socket.on("chatFindFriend", async ({ findValue }) => {
+  socket.on("chatFindFriend", async ({ findValue, location }) => {
+    const room = await Room.findById(location);
     const findFriend = await User.find({ email: findValue });
-    socket.emit("findFriend", { findFriend });
+    let isPeople = false;
+    // 찾는 사람이 이미 존재할 경우  true 반환
+    if (findFriend.length !== 0)
+      isPeople = room.peoples.includes(findFriend[0]._id);
+
+    socket.emit("findFriend", { findFriend, isPeople });
   });
 
   // 친구초대 됬다는 알림이랑 db에 저장되야한다.

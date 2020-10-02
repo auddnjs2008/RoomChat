@@ -37,15 +37,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #2bcbba;
+        background-color: #575fcf;
         i {
           font-size: 30px;
-          color: #16a085;
+          color: black;
         }
       }
       .message__name,
       .messageName {
         font-size: 15px;
+        color: white;
       }
     }
     .message__content,
@@ -69,10 +70,12 @@
       border-top-right-radius: 0px;
     }
   }
-  .notification {
+  .notification,
+  .messageAlarm {
     color: white;
     width: 100%;
     text-align: center;
+    margin-top: 5px;
   }
 }
 .chatFormWrapper {
@@ -238,7 +241,7 @@
           object-fit: cover;
         }
         .icon {
-          background-color: #ffa502;
+          background-color: #575fcf;
           border-radius: 50%;
           width: 50px;
           height: 50px;
@@ -263,6 +266,8 @@
   background-color: white;
   ul.plusFriends {
     width: 100%;
+    text-align: center;
+    font-weight: 600;
     li {
       width: 100%;
 

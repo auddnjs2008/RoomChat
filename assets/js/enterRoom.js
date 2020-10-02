@@ -1,6 +1,6 @@
 const { initSockets } = require("./socket");
 
-const roomContainer = document.querySelectorAll(".roomContainer");
+const roomContainer = document.querySelectorAll(".roomsOutWrapper");
 
 const handleRoomEnter = (e) => {
   const roomId = e.target.href.split("chat/")[1];

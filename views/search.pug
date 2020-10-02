@@ -7,7 +7,7 @@ block content
             input(type="email" placeholder="Searching By E-mail" name="term")
         
     .search__users
-        if findUsers
+        if (findUsers && findUsers.length !== 0)
             each user in findUsers
                 .userWrapper
                     +userBlock({
@@ -19,5 +19,5 @@ block content
                     if !isFriend
                         span.friendPlus  
                             <i class="fas fa-plus"></i>   
-        else
-            h3 Cant not find friend
+        else if (findUsers && findUsers.length === 0)
+            h3(style="color:white; font-size:40px; text-align:center; margin-top:20px;") Can't not find friend
