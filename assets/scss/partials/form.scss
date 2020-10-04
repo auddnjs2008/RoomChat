@@ -1,11 +1,21 @@
 .formContainer {
-  width: 100%;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
+  border: 1px solid black;
 
+  border-radius: 50%;
   form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    label.roomBackground {
+      color: white;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
     input {
       border: none;
       outline: none;
@@ -25,6 +35,82 @@
         font-weight: 700;
 
         color: #747d8c;
+      }
+    }
+  }
+  .friendList {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    width: 300px;
+    height: 300px;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .alarm {
+      font-size: 20px;
+      text-align: center;
+      margin-top: 50px;
+      line-height: 1.5;
+      color: red;
+    }
+    .friendList__title {
+      font-size: 25px;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .friendListWrapper {
+      width: 100%;
+      margin-top: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .friendList__profile {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #70a1ff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          opacity: 0.5;
+          object-fit: cover;
+        }
+        i {
+          font-size: 30px;
+        }
+        .friendList__name {
+          margin-top: 5px;
+          font-size: 15px;
+          font-weight: 600;
+          z-index: 2;
+        }
+      }
+      input[type="checkbox"] {
+        display: none;
+      }
+      input[type="checkbox"] + label {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid black;
+      }
+      input[type="checkbox"]:checked + label {
+        background-color: #f1c40f;
       }
     }
   }

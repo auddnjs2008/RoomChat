@@ -526,7 +526,7 @@ table {
     padding: 5px;
     cursor: pointer; }
 
-.formContainer label {
+.formContainer label.editLabel {
   background-color: #f1c40f;
   padding: 5px;
   font-size: 20px;
@@ -552,12 +552,21 @@ table {
     outline: none; }
 
 .formContainer {
-  width: 100%;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 50%; }
   .formContainer form {
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+    align-items: center; }
+    .formContainer form label.roomBackground {
+      color: white;
+      font-size: 20px;
+      margin-bottom: 5px; }
     .formContainer form input {
       border: none;
       outline: none;
@@ -574,6 +583,69 @@ table {
         font-size: 17px;
         font-weight: 700;
         color: #747d8c; }
+  .formContainer .friendList {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    width: 300px;
+    height: 300px;
+    overflow: auto; }
+    .formContainer .friendList::-webkit-scrollbar {
+      display: none; }
+    .formContainer .friendList .alarm {
+      font-size: 20px;
+      text-align: center;
+      margin-top: 50px;
+      line-height: 1.5;
+      color: red; }
+    .formContainer .friendList .friendList__title {
+      font-size: 25px;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px; }
+    .formContainer .friendList .friendListWrapper {
+      width: 100%;
+      margin-top: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .formContainer .friendList .friendListWrapper .friendList__profile {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #70a1ff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; }
+        .formContainer .friendList .friendListWrapper .friendList__profile img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          opacity: 0.5;
+          object-fit: cover; }
+        .formContainer .friendList .friendListWrapper .friendList__profile i {
+          font-size: 30px; }
+        .formContainer .friendList .friendListWrapper .friendList__profile .friendList__name {
+          margin-top: 5px;
+          font-size: 15px;
+          font-weight: 600;
+          z-index: 2; }
+      .formContainer .friendList .friendListWrapper input[type="checkbox"] {
+        display: none; }
+      .formContainer .friendList .friendListWrapper input[type="checkbox"] + label {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid black; }
+      .formContainer .friendList .friendListWrapper input[type="checkbox"]:checked + label {
+        background-color: #f1c40f; }
 
 .footer {
   position: fixed;
@@ -642,16 +714,77 @@ table {
   height: 85vh;
   overflow: auto;
   margin: 0 auto; }
+  .useresWrapper::-webkit-scrollbar {
+    width: 15px; }
+  .useresWrapper::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white; }
+  .useresWrapper::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent; }
+
+.search__users {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .search__users .userWrapper {
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    position: relative; }
+    .search__users .userWrapper .userBlock {
+      border: none; }
+      .search__users .userWrapper .userBlock .userAvatar .userPicture {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.7; }
+      .search__users .userWrapper .userBlock .userAvatar .userImage {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.7;
+        display: flex;
+        align-items: flex-start; }
+        .search__users .userWrapper .userBlock .userAvatar .userImage i {
+          margin-top: 20px;
+          font-size: 100px; }
+      .search__users .userWrapper .userBlock .userAvatar .userName {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        font-size: 30px;
+        font-weight: 600; }
+      .search__users .userWrapper .userBlock .userMessage {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top-left-radius: 10px; }
 
 .acceptMessage {
+  z-index: 9;
   animation: receive 1s linear; }
 
 @keyframes receive {
   0% {
+    z-index: 10000;
     background-color: #1e272e;
-    transform: scale(1.025, 1.025); }
+    transform: translate(-50%, -50%), scale(1.025, 1.025); }
   100% {
-    transform: scale(1, 1);
+    z-index: 10000;
+    transform: translate(-50%, -50%), scale(1, 1);
     background-color: white; } }
 
 .roomGridWrapper {
@@ -680,6 +813,19 @@ table {
       font-size: 70px; }
       .roomGridWrapper .changeRoomDesignBtn i:hover {
         transform: scale(1.1, 1.1); }
+  .roomGridWrapper .makeRoomBtn {
+    position: absolute;
+    right: 0;
+    top: 100px;
+    transform: translate(-50%);
+    width: 70px;
+    height: 70px; }
+    .roomGridWrapper .makeRoomBtn i {
+      color: black;
+      transition: all 0.1s linear;
+      font-size: 70px; }
+      .roomGridWrapper .makeRoomBtn i:hover {
+        transform: scale(1.1, 1.1); }
   .roomGridWrapper .controllBtn {
     position: absolute;
     top: 50%;
@@ -687,19 +833,44 @@ table {
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: space-between;
-    width: 400px; }
+    width: 400px;
+    height: 50px; }
+    .roomGridWrapper .controllBtn i {
+      color: white; }
     .roomGridWrapper .controllBtn .changeLeftBtn {
       font-size: 60px;
       display: none; }
     .roomGridWrapper .controllBtn .changeRightBtn {
       font-size: 60px;
       display: none; }
+    .roomGridWrapper .controllBtn .changeShowLeftBtn {
+      font-size: 60px;
+      display: block; }
+    .roomGridWrapper .controllBtn .changeShowRightBtn {
+      font-size: 60px;
+      display: block; }
 
 .pressChangeBtn {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%);
+  z-index: 0; }
+
+.slideAnimation {
+  animation: slider 0.3s linear; }
+
+@keyframes slider {
+  0% {
+    opacity: 0;
+    width: 100px;
+    height: 100px;
+    background-color: black; }
+  100% {
+    opacity: 1;
+    width: 300px;
+    height: 300px;
+    background-color: white; } }
 
 .roomGridWrapper .roomsOutWrapper, .pressChangeBtn {
   width: 300px;
@@ -835,7 +1006,8 @@ a {
   margin-bottom: 5px; }
   .userWrapper .friendPlus {
     position: absolute;
-    top: 50%;
+    top: 0;
     right: 10px;
     transform: translateY(-50%);
-    font-size: 30px; }
+    font-size: 50px;
+    color: white; }

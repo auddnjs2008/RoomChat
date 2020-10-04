@@ -8,12 +8,12 @@ const SEARCH = "/search";
 
 // User
 const USER = "/user";
+const MAKEROOMDETAIL = "/makeroomdetail";
 const USERFRIENDS = "/:id";
 const USERPROFILE = "/:id/profile";
 const EDITPROFILE = "/:id/editprofile";
 const USERROOMS = "/:id/chat";
 const ROOMDETAIL = "/:id/chat/:roomid";
-
 //API
 
 const API = "/api";
@@ -45,6 +45,7 @@ const routes = {
       return ROOMDETAIL;
     }
   },
+  makeroomdetail: MAKEROOMDETAIL,
   api: API,
   addfriend: ADDFriend,
   makeroom: MAKERoom,

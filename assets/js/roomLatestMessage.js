@@ -21,5 +21,3 @@ const init = () => {
 };
 
 init();
-
-roomContainer.forEach((room) => console.log(room.href.split("chat/")[1]));

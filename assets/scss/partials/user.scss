@@ -56,4 +56,75 @@
   height: 85vh;
   overflow: auto;
   margin: 0 auto;
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+}
+
+.search__users {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .userWrapper {
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    position: relative;
+    .userBlock {
+      border: none;
+      .userAvatar {
+        .userPicture {
+          width: 300px;
+          height: 300px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0.7;
+        }
+        .userImage {
+          width: 300px;
+          height: 300px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0.7;
+          display: flex;
+          align-items: flex-start;
+          i {
+            margin-top: 20px;
+            font-size: 100px;
+          }
+        }
+        .userName {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: black;
+          font-size: 30px;
+          font-weight: 600;
+        }
+      }
+      .userMessage {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top-left-radius: 10px;
+      }
+    }
+  }
 }

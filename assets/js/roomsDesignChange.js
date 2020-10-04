@@ -1,31 +1,67 @@
 const changeBtn = document.querySelector(".changeRoomDesignBtn");
 const roomGridWrapper = document.querySelector(".roomGridWrapper");
-const roomItems = roomGridWrapper ? roomGridWrapper.querySelectorAll("a") : "";
+const roomItems = roomGridWrapper
+  ? roomGridWrapper.querySelectorAll(".roomsOutWrapper")
+  : "";
 
 const controllBtn = document.querySelector(".controllBtn");
 const changeLeftBtn = document.querySelector(".changeLeftBtn");
 const changeRightBtn = document.querySelector(".changeRightBtn");
 
+let NodeStore = roomItems.length - 1;
+let point = 0; // zindex 값
 const handleChangeStyle = (e) => {
-  if (controllBtn.style.width === "") {
-    changeLeftBtn.style.display = "inline";
-    changeRightBtn.style.display = "inline";
-  } else {
-    console.log(controllBtn.style.width);
-    changeLeftBtn.style.display = "none";
-    changeRightBtn.style.display = "none";
-  }
+  roomItems.forEach((item) => {
+    item.style.zIndex = "0";
+    item.classList.remove("slideAnimation");
+  });
+  changeLeftBtn.classList.toggle("changeLeftBtn");
+  changeLeftBtn.classList.toggle("changeShowLeftBtn");
+
+  changeRightBtn.classList.toggle("changeRightBtn");
+  changeRightBtn.classList.toggle("changeShowRightBtn");
+
   roomItems.forEach((item) => {
     item.classList.toggle("roomsOutWrapper");
     item.classList.toggle("pressChangeBtn");
   });
 };
 
+//맨처음이 끝에서 시작한다.
 const handleLeft = (e) => {
-  console.log(e.target);
+  if (NodeStore === 0) {
+    NodeStore = roomItems.length - 1;
+    roomItems.forEach((item) => {
+      item.style.zIndex = "0";
+    });
+    point = 0;
+  } else NodeStore--;
+
+  roomItems[NodeStore].style.zIndex = `${point + 1}`;
+  roomItems[NodeStore].classList.add("slideAnimation");
+  setTimeout(
+    () => roomItems[NodeStore].classList.remove("slideAnimation"),
+    1000
+  );
+  point++;
 };
+
 const handleRight = (e) => {
-  console.log(e.target);
+  if (NodeStore === roomItems.length - 1) {
+    NodeStore = 0;
+    roomItems.forEach((item) => {
+      item.style.zIndex = "0";
+    });
+    point = 0;
+  } else NodeStore++;
+
+  roomItems[NodeStore].style.zIndex = `${point + 1}`;
+  roomItems[NodeStore].classList.add("slideAnimation");
+  setTimeout(
+    () => roomItems[NodeStore].classList.remove("slideAnimation"),
+    1000
+  );
+  point++;
 };
 
 const init = () => {

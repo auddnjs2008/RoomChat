@@ -1,0 +1,25 @@
+extends layouts/main
+
+block content
+    .formContainer
+        form(action=`/user/makeroomdetail`, method="post" enctype="multipart/form-data")
+            label(for="roombackground").roomBackground Room Background Image
+            input(type="file" placeholder="Image" name="roombackground" id="roombackground" accept="image/*")
+            input(type="text" placeholder="roomName" name="roomName")
+            .friendList
+                .friendList__title who do you invite?
+                if friends.length !== 0
+                    each friend in friends
+                        .friendListWrapper
+                            .friendList__profile
+                                if friend.avatarUrl
+                                    img(src=friend.avatarUrl)
+                                else
+                                    <i class="fas fa-user-alt"></i>
+                                .friendList__name=friend.name    
+                            input(type="checkbox" id=friend.id name="plusfriend" value=friend.id)   
+                            label(for=friend.id)
+                else
+                    .alarm  There are no friendes <br/> You should add friend         
+            if(friends.length !== 0)
+                input(type="submit" value="Submit")

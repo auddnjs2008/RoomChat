@@ -129,3 +129,11 @@ export const postMessage = async (req, res) => {
     res.end();
   }
 };
+
+export const getMakeRoom = async (req, res) => {
+  const user = await User.findById(req.user.id).populate("friends");
+
+  res.render("makeRoom", { subtitle: "makeRoom", friends: user.friends });
+};
+
+export const postMakeRoom = async (req, res) => {};
