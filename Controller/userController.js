@@ -3,6 +3,7 @@ import Room from "../Model/Rooms";
 import Message from "../Model/Message";
 import routes from "../routes";
 import app from "../server";
+import userRouter from "../routers/userRouter";
 
 export const userFriends = async (req, res) => {
   const {
@@ -136,4 +137,31 @@ export const getMakeRoom = async (req, res) => {
   res.render("makeRoom", { subtitle: "makeRoom", friends: user.friends });
 };
 
-export const postMakeRoom = async (req, res) => {};
+export const postMakeRoom = async (req, res) => {
+  const {
+    body: { roomName, plusfriend },
+    file: { path },
+  } = req;
+
+  try {
+    let peoples = plusfriend;
+    peoples.push(`${req.user.id}`);
+
+    const newRoom = await Room.create({
+      avatarUrl: path ? path : "",
+      title: roomName ? roomName : "",
+      peoples,
+    });
+
+    for (let i = 0; i < peoples.length; i++) {
+      const user = await User.findById(peoples[i]);
+      user.rooms.push(newRoom.id);
+      user.save();
+    }
+
+    res.redirect(`/user/${req.user.id}/chat`);
+  } catch (error) {
+    console.log(error);
+    res.redirect("/user/invite");
+  }
+};

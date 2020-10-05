@@ -25,6 +25,49 @@
   .roomsOutWrapper {
     @extend %changeBtn;
 
+    .newRoomContainer {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      color: black;
+      font-weight: 600;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        object-fit: cover;
+        opacity: 0.5;
+      }
+      .roomTitle {
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .showMessage {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        padding: 10px;
+        background-color: #f1c40f;
+
+        border-radius: 10px;
+        border-top-right-radius: 0px;
+      }
+      .roomMember {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
     @keyframes spin {
       0% {
         transform: rotateY(0deg);
@@ -114,6 +157,49 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
+  .newRoomContainer {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    color: black;
+    font-weight: 600;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      object-fit: cover;
+      opacity: 0.5;
+    }
+    .roomTitle {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+    }
+    .showMessage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      padding: 10px;
+      background-color: #f1c40f;
+
+      border-radius: 10px;
+      border-top-right-radius: 0px;
+    }
+    .roomMember {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 }
 
 .slideAnimation {

@@ -2,10 +2,10 @@ extends layouts/main
 
 block content
     .formContainer
-        form(action=`/user/makeroomdetail`, method="post" enctype="multipart/form-data")
+        form(action='/user/invite' method="post" enctype="multipart/form-data")
             label(for="roombackground").roomBackground Room Background Image
-            input(type="file" placeholder="Image" name="roombackground" id="roombackground" accept="image/*")
-            input(type="text" placeholder="roomName" name="roomName")
+            input(type="file" placeholder="Image" name="roombackground" id="roombackground" accept="image/*" )
+            input(type="text" placeholder="roomName" name="roomName" )
             .friendList
                 .friendList__title who do you invite?
                 if friends.length !== 0

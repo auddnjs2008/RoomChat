@@ -8,7 +8,7 @@ const SEARCH = "/search";
 
 // User
 const USER = "/user";
-const MAKEROOMDETAIL = "/makeroomdetail";
+const INVITE = "/invite";
 const USERFRIENDS = "/:id";
 const USERPROFILE = "/:id/profile";
 const EDITPROFILE = "/:id/editprofile";
@@ -38,6 +38,7 @@ const routes = {
   userprofile: USERPROFILE,
   editprofile: EDITPROFILE,
   userrooms: USERROOMS,
+  invite: INVITE,
   roomdetail: (id, roomid) => {
     if (roomid && id) {
       return `/user/${id}/chat/${roomid}`;
@@ -45,7 +46,6 @@ const routes = {
       return ROOMDETAIL;
     }
   },
-  makeroomdetail: MAKEROOMDETAIL,
   api: API,
   addfriend: ADDFriend,
   makeroom: MAKERoom,
