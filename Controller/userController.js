@@ -140,7 +140,7 @@ export const getMakeRoom = async (req, res) => {
 export const postMakeRoom = async (req, res) => {
   const {
     body: { roomName, plusfriend },
-    file: { path },
+    file,
   } = req;
 
   try {
@@ -148,7 +148,7 @@ export const postMakeRoom = async (req, res) => {
     peoples.push(`${req.user.id}`);
 
     const newRoom = await Room.create({
-      avatarUrl: path ? path : "",
+      avatarUrl: file ? file.path : "",
       title: roomName ? roomName : "",
       peoples,
     });

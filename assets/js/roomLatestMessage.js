@@ -6,7 +6,12 @@ const init = () => {
     roomContainer.forEach((room) => {
       room.style.order = "0";
       if (room.href.split("chat/")[1] === roomSocket) {
-        const span = room.querySelector(".showMessage");
+        let span = room.querySelector(".showMessage");
+        if (span === null) {
+          span = room
+            .querySelector(".roomImages")
+            .querySelector(".showMessage");
+        }
         const fixedMessage =
           showMessage.length > 15
             ? showMessage.slice(0, 14) + "....."

@@ -3,12 +3,16 @@ include mixins/user
 
 block content
     .useresWrapper
-        if friends.length
-            each friend in friends
-                +userBlock({
-                        id:friend.id,
-                        name:friend.name,
-                        message:friend.message,
-                        avatarUrl:friend.avatarUrl
-                    })
-            
+        .useresDesignWrapper
+            if friends.length
+                each friend in friends
+                    +userBlock({
+                            id:friend.id,
+                            name:friend.name,
+                            message:friend.message,
+                            avatarUrl:friend.avatarUrl
+                        })
+        .sliderLeftBtn
+            <i class="fas fa-angle-left"></i>
+        .sliderRightBtn
+            <i class="fas fa-angle-right"></i>

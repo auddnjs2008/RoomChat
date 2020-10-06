@@ -55,10 +55,11 @@ block content
                         .roomImages   
                             if(room.title)
                                 span.roomTitle= room.title 
-                            if lastMessages[index].messages[room.messages.length-1].message.length <15
-                                span.showMessage=lastMessages[index].messages[room.messages.length-1].message
-                            else
-                                span.showMessage=lastMessages[index].messages[room.messages.length-1].message.slice(0,14)+"....."
+                            if lastMessages[index].messages.length !== 0
+                                if lastMessages[index].messages[room.messages.length-1].message.length <15
+                                    span.showMessage=lastMessages[index].messages[room.messages.length-1].message
+                                else
+                                    span.showMessage=lastMessages[index].messages[room.messages.length-1].message.slice(0,14)+"....."
                             if(room.peoples.length !== 2)
                                 span.roomMember=room.peoples.length+"명"       
 

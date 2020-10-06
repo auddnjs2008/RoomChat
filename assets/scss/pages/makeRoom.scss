@@ -1,0 +1,26 @@
+.formContainer.makeRoom {
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  background-image: url("/uploads/images/우주사람.jpg");
+  background-size: cover;
+  background-position: center;
+
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input {
+    width: 200px;
+    background-color: transparent;
+    border: 5px solid white;
+    color: white;
+    &::placeholder {
+      color: white;
+    }
+  }
+  input[type="submit"] {
+    border: 5px solid white;
+    color: white;
+  }
+}

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html,
 body,
 div,
@@ -551,14 +552,77 @@ table {
     border-radius: 5px;
     outline: none; }
 
-.formContainer {
-  width: 400px;
-  height: 400px;
+.useresWrapper {
+  background-color: black;
+  background-image: url("/uploads/images/지구.png");
+  position: relative;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  max-width: 600px;
+  height: 600px;
+  overflow: auto;
+  border-radius: 50%;
+  margin: 0 auto; }
+  .useresWrapper::-webkit-scrollbar {
+    width: 20px; }
+  .useresWrapper::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white; }
+  .useresWrapper::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent; }
+  .useresWrapper .useresDesignWrapper {
+    width: 100%;
+    display: flex; }
+    .useresWrapper .useresDesignWrapper .userBlock {
+      all: unset;
+      width: 200px;
+      height: 200px;
+      margin-right: 5px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.6); }
+      .useresWrapper .useresDesignWrapper .userBlock a {
+        border: 3px solid white;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%; }
+        .useresWrapper .useresDesignWrapper .userBlock a .userName {
+          color: white; }
+  .useresWrapper .sliderLeftBnt {
+    position: absolute;
+    top: 0;
+    left: 0; }
+
+.formContainer.makeRoom {
+  width: 600px;
+  height: 600px;
   margin: 0 auto;
+  background-image: url("/uploads/images/우주사람.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
-  border: 1px solid black;
-  border-radius: 50%; }
+  align-items: center; }
+  .formContainer.makeRoom input {
+    width: 200px;
+    background-color: transparent;
+    border: 5px solid white;
+    color: white; }
+    .formContainer.makeRoom input::placeholder {
+      color: white; }
+  .formContainer.makeRoom input[type="submit"] {
+    border: 5px solid white;
+    color: white; }
+
+.formContainer {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center; }
   .formContainer form {
     display: flex;
     flex-direction: column;
@@ -586,11 +650,11 @@ table {
   .formContainer .friendList {
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: white;
+    background-color: transparent;
     border-radius: 20px;
     padding: 10px;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     overflow: auto; }
     .formContainer .friendList::-webkit-scrollbar {
       display: none; }
@@ -604,7 +668,8 @@ table {
       font-size: 25px;
       width: 100%;
       text-align: center;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      color: white; }
     .formContainer .friendList .friendListWrapper {
       width: 100%;
       margin-top: 5px;
@@ -633,6 +698,7 @@ table {
         .formContainer .friendList .friendListWrapper .friendList__profile i {
           font-size: 30px; }
         .formContainer .friendList .friendListWrapper .friendList__profile .friendList__name {
+          color: white;
           margin-top: 5px;
           font-size: 15px;
           font-weight: 600;
@@ -643,7 +709,7 @@ table {
         display: inline-block;
         width: 20px;
         height: 20px;
-        border: 1px solid black; }
+        border: 2px solid white; }
       .formContainer .friendList .friendListWrapper input[type="checkbox"]:checked + label {
         background-color: #f1c40f; }
 
@@ -671,6 +737,7 @@ table {
   border-bottom: 1px solid #dfe6e9;
   padding: 10px; }
   .userBlock a {
+    position: relative;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -707,25 +774,6 @@ table {
       color: black;
       font-weight: 600; }
 
-.useresWrapper {
-  background-color: white;
-  max-width: 600px;
-  border-radius: 20px;
-  height: 85vh;
-  overflow: auto;
-  margin: 0 auto; }
-  .useresWrapper::-webkit-scrollbar {
-    width: 15px; }
-  .useresWrapper::-webkit-scrollbar-track {
-    background-color: grey;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px white; }
-  .useresWrapper::-webkit-scrollbar-thumb {
-    background-color: #2f3542;
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 2px solid transparent; }
-
 .search__users {
   height: 70vh;
   display: flex;
@@ -738,34 +786,41 @@ table {
     border-radius: 50%;
     position: relative; }
     .search__users .userWrapper .userBlock {
-      border: none; }
-      .search__users .userWrapper .userBlock .userAvatar .userPicture {
+      border: none;
+      width: 300px;
+      height: 300px;
+      position: relative;
+      padding: 0px; }
+      .search__users .userWrapper .userBlock .userAvatar {
         width: 300px;
-        height: 300px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0.7; }
-      .search__users .userWrapper .userBlock .userAvatar .userImage {
-        width: 300px;
-        height: 300px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0.7;
-        display: flex;
-        align-items: flex-start; }
-        .search__users .userWrapper .userBlock .userAvatar .userImage i {
-          margin-top: 20px;
-          font-size: 100px; }
-      .search__users .userWrapper .userBlock .userAvatar .userName {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: black;
-        font-size: 30px;
-        font-weight: 600; }
+        height: 300px; }
+        .search__users .userWrapper .userBlock .userAvatar .userPicture {
+          width: 300px;
+          height: 300px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0.7; }
+        .search__users .userWrapper .userBlock .userAvatar .userImage {
+          width: 300px;
+          height: 300px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0.7;
+          display: flex;
+          align-items: flex-start; }
+          .search__users .userWrapper .userBlock .userAvatar .userImage i {
+            margin-top: 20px;
+            font-size: 100px; }
+        .search__users .userWrapper .userBlock .userAvatar .userName {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: black;
+          font-size: 30px;
+          font-weight: 600; }
       .search__users .userWrapper .userBlock .userMessage {
         position: absolute;
         top: 70%;
@@ -796,7 +851,8 @@ table {
     height: 300px;
     border-radius: 50%;
     color: black;
-    font-weight: 600; }
+    font-weight: 600;
+    pointer-events: none; }
     .roomGridWrapper .roomsOutWrapper .newRoomContainer img {
       position: absolute;
       top: 0;
@@ -895,7 +951,8 @@ table {
     height: 300px;
     border-radius: 50%;
     color: black;
-    font-weight: 600; }
+    font-weight: 600;
+    pointer-events: none; }
     .pressChangeBtn .newRoomContainer img {
       position: absolute;
       top: 0;
@@ -1029,7 +1086,10 @@ table {
       .roomGridWrapper .roomsOutWrapper .roomImages__profiles .profiles__icon i, .pressChangeBtn .roomImages__profiles .profiles__icon i {
         font-size: 30px; }
   .roomGridWrapper .roomsOutWrapper .roomImages, .pressChangeBtn .roomImages {
+    font-weight: 600;
+    color: black;
     width: 100%;
+    height: 100%;
     pointer-events: none;
     position: absolute;
     top: 50%;
@@ -1039,15 +1099,25 @@ table {
     flex-direction: column;
     align-items: center;
     justify-content: space-around; }
+    .roomGridWrapper .roomsOutWrapper .roomImages .roomTitle, .pressChangeBtn .roomImages .roomTitle {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%); }
     .roomGridWrapper .roomsOutWrapper .roomImages .showMessage, .pressChangeBtn .roomImages .showMessage {
-      display: block;
-      opacity: 0.7;
-      color: black;
-      text-align: center; }
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px;
+      background-color: #f1c40f;
+      border-radius: 10px;
+      border-top-right-radius: 0px; }
     .roomGridWrapper .roomsOutWrapper .roomImages .roomMember, .pressChangeBtn .roomImages .roomMember {
-      color: black;
-      font-size: 13px;
-      margin-top: 5px; }
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%); }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;

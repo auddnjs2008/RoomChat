@@ -31,7 +31,7 @@
       border-radius: 50%;
       color: black;
       font-weight: 600;
-
+      pointer-events: none;
       img {
         position: absolute;
         top: 0;
@@ -163,7 +163,7 @@
     border-radius: 50%;
     color: black;
     font-weight: 600;
-
+    pointer-events: none;
     img {
       position: absolute;
       top: 0;

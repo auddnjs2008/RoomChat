@@ -1,12 +1,8 @@
 .formContainer {
-  width: 400px;
-  height: 400px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  border: 1px solid black;
 
-  border-radius: 50%;
   form {
     display: flex;
     flex-direction: column;
@@ -41,11 +37,11 @@
   .friendList {
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: white;
+    background-color: transparent;
     border-radius: 20px;
     padding: 10px;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     overflow: auto;
     &::-webkit-scrollbar {
       display: none;
@@ -63,6 +59,7 @@
       width: 100%;
       text-align: center;
       margin-bottom: 10px;
+      color: white;
     }
     .friendListWrapper {
       width: 100%;
@@ -94,6 +91,7 @@
           font-size: 30px;
         }
         .friendList__name {
+          color: white;
           margin-top: 5px;
           font-size: 15px;
           font-weight: 600;
@@ -107,7 +105,7 @@
         display: inline-block;
         width: 20px;
         height: 20px;
-        border: 1px solid black;
+        border: 2px solid white;
       }
       input[type="checkbox"]:checked + label {
         background-color: #f1c40f;
