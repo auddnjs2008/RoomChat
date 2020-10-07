@@ -133,52 +133,67 @@ table {
   .title h1 {
     margin-right: 5px; }
 
-.where .loginButton,
-.where .logoutButton {
-  width: 100%;
+.where {
+  border: 3px solid white;
+  padding: 5px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  align-items: center; }
-  .where .loginButton button,
-  .where .logoutButton button {
-    width: 200px;
-    height: 50px;
-    background-color: #f1c40f;
-    border: none;
-    outline: none; }
-    .where .loginButton button a,
-    .where .logoutButton button a {
-      color: white;
-      font-size: 20px; }
-    .where .loginButton button:nth-child(1),
-    .where .logoutButton button:nth-child(1) {
-      margin-bottom: 5px; }
-
-.where .homeProfile {
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  color: black; }
-  .where .homeProfile .userPicture {
-    width: 105px;
-    height: 105px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 10px; }
-  .where .homeProfile .homeImage {
-    font-size: 75px;
-    width: 105px;
-    height: 105px;
-    background-color: #70a1ff;
-    border-radius: 50%;
+  transition: all 0.2s linear; }
+  .where:hover {
+    transform: scale(1.1, 1.1);
+    background-color: rgba(225, 225, 0, 0.2); }
+  .where .loginButton,
+  .where .logoutButton {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center; }
+    .where .loginButton button,
+    .where .logoutButton button {
+      width: 200px;
+      height: 50px;
+      background-color: #f1c40f;
+      border: none;
+      outline: none; }
+      .where .loginButton button a,
+      .where .logoutButton button a {
+        color: white;
+        font-size: 20px; }
+      .where .loginButton button:nth-child(1),
+      .where .logoutButton button:nth-child(1) {
+        margin-bottom: 5px; }
+  .where .homeProfile {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 10px; }
-  .where .homeProfile .homeName {
-    color: white;
-    font-size: 20px;
-    margin-bottom: 20px; }
+    color: black; }
+    .where .homeProfile .userPicture {
+      width: 105px;
+      height: 105px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px; }
+    .where .homeProfile .homeImage {
+      font-size: 75px;
+      width: 105px;
+      height: 105px;
+      background-color: #70a1ff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px; }
+    .where .homeProfile .homeName {
+      color: white;
+      font-size: 20px;
+      margin-bottom: 20px; }
 
 .profileWrapper {
   width: 100%;
@@ -235,7 +250,8 @@ table {
     border-radius: 20px;
     background-color: #ced6e0;
     text-align: center;
-    color: black; }
+    color: black;
+    cursor: pointer; }
 
 .chatRoom {
   width: 100%;
@@ -565,7 +581,7 @@ table {
   border-radius: 50%;
   margin: 0 auto; }
   .useresWrapper::-webkit-scrollbar {
-    width: 20px; }
+    width: 15px; }
   .useresWrapper::-webkit-scrollbar-track {
     background-color: grey;
     border-radius: 10px;
@@ -584,7 +600,10 @@ table {
       height: 200px;
       margin-right: 5px;
       border-radius: 50%;
-      background-color: rgba(0, 0, 0, 0.6); }
+      background-color: rgba(0, 0, 0, 0.6);
+      transition: all 0.2s linear; }
+      .useresWrapper .useresDesignWrapper .userBlock:hover {
+        transform: scale(1.1, 1.1); }
       .useresWrapper .useresDesignWrapper .userBlock a {
         border: 3px solid white;
         width: 200px;
@@ -592,10 +611,66 @@ table {
         border-radius: 50%; }
         .useresWrapper .useresDesignWrapper .userBlock a .userName {
           color: white; }
-  .useresWrapper .sliderLeftBnt {
-    position: absolute;
-    top: 0;
-    left: 0; }
+
+.sliderLeftBtn {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 500px;
+  left: 40%;
+  transform: translateX(-50%); }
+  .sliderLeftBtn i {
+    font-size: 70px;
+    color: yellow; }
+
+.sliderRightBtn {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 500px;
+  right: 40%;
+  transform: translateX(50%); }
+  .sliderRightBtn i {
+    font-size: 70px;
+    color: yellow; }
+
+.userChangeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  z-index: 1; }
+  .userChangeBtn i {
+    font-size: 70px;
+    color: white;
+    transition: all 0.1s linear; }
+    .userChangeBtn i:hover {
+      transform: scale(1.1, 1.1); }
+
+.usersChangeDeisgn {
+  margin: 0;
+  max-width: none;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0px;
+  background-position: center;
+  background-size: cover; }
+  .usersChangeDeisgn .useresDesignWrapper {
+    display: grid;
+    gap: 5px;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+    .usersChangeDeisgn .useresDesignWrapper .userBlock {
+      background-color: rgba(255, 255, 0, 0.3); }
+
+.show {
+  display: none; }
+
+.rotate {
+  transform: rotate(180deg);
+  transition: all 0.3s linear; }
 
 .formContainer.makeRoom {
   width: 600px;
@@ -895,7 +970,7 @@ table {
     position: absolute;
     right: 0;
     top: 20px;
-    transform: translate(-50%);
+    margin-right: 30px;
     width: 70px;
     height: 70px; }
     .roomGridWrapper .changeRoomDesignBtn i {

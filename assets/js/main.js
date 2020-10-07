@@ -8,6 +8,8 @@ import "./chatAddFriend";
 import "./chatUsersList";
 import "./roomsDesignChange";
 import "./makeRoom";
+import "./usersSliderBar";
+import "./usersDeisgnChange";
 //footer 설정
 
 const footer = document.querySelector(".footer__nav");

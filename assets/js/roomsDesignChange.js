@@ -11,6 +11,15 @@ const changeRightBtn = document.querySelector(".changeRightBtn");
 let NodeStore = roomItems.length - 1;
 let point = 0; // zindex 값
 const handleChangeStyle = (e) => {
+  changeBtn.style.transform = "rotate(180deg)";
+  changeBtn.style.transformOrigin = "center center";
+  changeBtn.style.transition = "all 0.3s linear";
+
+  setTimeout(() => {
+    changeBtn.style.transform = "rotate(0deg)";
+    changeBtn.style.transition = "";
+    changeBtn.style.transformOrigin = "";
+  }, 250);
   roomItems.forEach((item) => {
     item.style.zIndex = "0";
     item.classList.remove("slideAnimation");
