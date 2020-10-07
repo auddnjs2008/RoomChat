@@ -1,3 +1,4 @@
+import "@babel/polyfill";
 import "./db";
 import "./Model/User";
 import dotenv from "dotenv";
@@ -5,6 +6,7 @@ import express from "express";
 import socketIo from "socket.io";
 import morgan from "morgan";
 import passport from "passport";
+import path from "path";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import session from "express-session";
@@ -31,9 +33,9 @@ const handleListening = () => {
 };
 
 app.set("view engine", "pug");
-app.use("/static", express.static("static"));
-app.use("/uploads", express.static("uploads"));
-app.use("*/uploads", express.static("uploads"));
+app.set("views", path.join(__dirname, "views"));
+app.use("/static", express.static(path.join(__dirname, "static")));
+
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
