@@ -1,0 +1,13 @@
+extends layouts/main
+
+block content
+    .editForm
+        .formContainer
+            form(action=`/user/${loggedUser.id}/editProfile`, method="post" enctype="multipart/form-data")
+                label(for="profile").editLabel profileImage
+                input(type="file" placeholder="Image" name="avatar" id="profile" accept="image/*")
+                label(for="background").editLabel BackgroundImage
+                input(type="file" placeholder="Image" name="background" id="background" accept="image/*")
+                input(type="text" placeholder="name" name="name")
+                input(type="text" placeholder="stateMessage" name="message")
+                input(type="submit" value="Submit")

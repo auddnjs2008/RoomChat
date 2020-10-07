@@ -1,0 +1,53 @@
+.editForm {
+  margin: 0 auto;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-image: url("https://wewechat.s3-ap-northeast-1.amazonaws.com/images/%EC%9A%B0%EC%A3%BC%EC%82%AC%EB%9E%8C.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .formContainer {
+    label.editLabel {
+      padding: 5px;
+      font-size: 20px;
+      color: white;
+      font-weight: 600;
+      text-align: center;
+    }
+    input {
+      background-color: transparent;
+      font-size: 20px;
+      color: white;
+      &::placeholder {
+        color: white;
+        font-size: 20px;
+      }
+    }
+    input[type="submit"] {
+      color: white;
+      border: 5px solid white;
+    }
+    input[type="file"] {
+      background-color: transparent;
+      border: 5px solid white;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      &::-webkit-file-upload-button {
+        margin-top: 10px;
+        color: black;
+        font-weight: 600;
+        border: none;
+        background-color: #dfe6e9;
+        border-radius: 5px;
+        outline: none;
+      }
+    }
+  }
+}

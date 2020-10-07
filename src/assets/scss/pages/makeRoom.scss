@@ -1,0 +1,26 @@
+.formContainer.makeRoom {
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  background-image: url("https://wewechat.s3-ap-northeast-1.amazonaws.com/images/%EC%9A%B0%EC%A3%BC%EC%82%AC%EB%9E%8C.jpg");
+  background-size: cover;
+  background-position: center;
+
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input {
+    width: 200px;
+    background-color: transparent;
+    border: 5px solid white;
+    color: white;
+    &::placeholder {
+      color: white;
+    }
+  }
+  input[type="submit"] {
+    border: 5px solid white;
+    color: white;
+  }
+}

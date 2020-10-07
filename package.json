@@ -6,8 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:server": "nodemon --exec babel-node server.js --delay 2",
-    "dev:assets": "cross-env WEBPACK_ENV=development webpack -w",
-    "build:assets": "cross-env WEBPACK_ENV=production webpack"
+    "dev:assets": "cd src && cross-env WEBPACK_ENV=development  webpack -w",
+    "build:assets": "cd src && cross-env WEBPACK_ENV=production  webpack",
+    "build:server": "babel src --out-dir build --ignore 'src/assets', 'src/static','src/webpack.config.js'",
+    "build": "npm run build:server && npm run build:assets"
   },
   "repository": {
     "type": "git",
@@ -20,11 +22,13 @@
   },
   "homepage": "https://github.com/auddnjs2008/RoomChat#readme",
   "dependencies": {
+    "@babel/cli": "^7.11.6",
     "@babel/core": "^7.11.6",
     "@babel/node": "^7.10.5",
     "@babel/polyfill": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "autoprefixer": "^9.8.6",
+    "aws-sdk": "^2.768.0",
     "axios": "^0.20.0",
     "babel-loader": "^8.1.0",
     "babel-polyfill": "^6.26.0",
@@ -41,6 +45,7 @@
     "mongoose": "^5.10.4",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
     "node-sass": "^4.14.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",

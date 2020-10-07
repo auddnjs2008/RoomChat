@@ -98,6 +98,7 @@ dist
 .fusebox/
 .package-lock.json
 .env
+build
 
 # DynamoDB Local files
 .dynamodb/

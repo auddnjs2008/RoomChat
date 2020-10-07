@@ -1,0 +1,114 @@
+.userBlock {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #dfe6e9;
+  padding: 10px;
+  a {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    .userAvatar {
+      width: 55px;
+      text-align: center;
+      color: black;
+      .userPicture {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 4px;
+      }
+      .userImage {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background-color: #70a1ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i {
+          font-size: 40px;
+        }
+        margin-bottom: 5px;
+      }
+      .userName {
+        font-weight: 400;
+      }
+    }
+    .userMessage {
+      color: black;
+      padding: 10px;
+      border-radius: 10px;
+      border-top-left-radius: 0px;
+      background-color: #f1c40f;
+      color: black;
+      font-weight: 600;
+    }
+  }
+}
+
+.search__users {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .userWrapper {
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    position: relative;
+    .userBlock {
+      border: none;
+      width: 300px;
+      height: 300px;
+      position: relative;
+      padding: 0px;
+      .userAvatar {
+        width: 300px;
+        height: 300px;
+        .userPicture {
+          width: 300px;
+          height: 300px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0.7;
+        }
+        .userImage {
+          width: 300px;
+          height: 300px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0.7;
+          display: flex;
+          align-items: flex-start;
+          i {
+            margin-top: 20px;
+            font-size: 100px;
+          }
+        }
+        .userName {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: black;
+          font-size: 30px;
+          font-weight: 600;
+        }
+      }
+      .userMessage {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top-left-radius: 10px;
+      }
+    }
+  }
+}
