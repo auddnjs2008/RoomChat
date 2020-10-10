@@ -9,7 +9,12 @@ import {
   postJoin,
   Logout,
   postSearch,
+  boardHome,
+  getUpload,
+  postUpload,
 } from "../Controller/globalController";
+
+import { multipleImage } from "../localMiddleware";
 
 const globalRouter = express.Router();
 
@@ -26,4 +31,8 @@ globalRouter.get(routes.logout, Logout);
 globalRouter.get(routes.search, getSearch);
 globalRouter.post(routes.search, postSearch);
 
+globalRouter.get(routes.board, boardHome);
+
+globalRouter.get(routes.upload, getUpload);
+globalRouter.post(routes.upload, multipleImage, postUpload);
 export default globalRouter;

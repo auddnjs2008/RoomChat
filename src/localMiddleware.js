@@ -23,6 +23,8 @@ export const imageUpload = Images.fields([
   { name: "background", maxCount: 1 },
 ]);
 
+export const multipleImage = Images.array("images", 7);
+
 export const localMiddleware = (req, res, next) => {
   res.locals.loggedUser = req.user || null;
   if (req.user) app.locals.user = req.user.id || null;

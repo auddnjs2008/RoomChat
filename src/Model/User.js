@@ -19,6 +19,12 @@ const UserSchema = new mongoose.Schema({
       ref: "Room",
     },
   ],
+  posts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post",
+    },
+  ],
 });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });

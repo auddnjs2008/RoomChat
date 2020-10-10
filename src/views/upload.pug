@@ -1,0 +1,11 @@
+extends layouts/main
+
+block content
+    .uploadContainer
+        .formContainer
+            form(action="/board/upload",method="post" enctype="multipart/form-data")
+                label(for="Image").imageLabel UploadImages
+                input(multiple type="file" placeholder="Images" name="images" id="Image" accept="image/*")   
+                input(type="text", name="title" placeholder="Title")
+                textarea(name="content" value="Content")
+                input(type="submit" value="Submit")

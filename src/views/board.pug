@@ -1,0 +1,18 @@
+extends layouts/main
+
+block content 
+    .BoardWrapper
+        a(href="/board/upload").boardUpload  Upload
+        ul.BoardItems
+            if(allPostes.length !== 0)
+                each post in allPostes
+                    .postWrapper
+                        .postCreator
+                            if(post.creator.avatarUrl)
+                                img(src=post.creator.avatarUrl)
+                            else
+                                .creatorIcon
+                                    <i class="fas fa-user-alt"></i>
+                            .creatorName=post.creator.name
+                        .postTitle=post.title
+                        .postTime=post.time

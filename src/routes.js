@@ -5,7 +5,8 @@ const LOGIN = "/login";
 const LOGOUT = "/logout";
 const JOIN = "/join";
 const SEARCH = "/search";
-
+const BOARD = "/board";
+const UPLOAD = "/board/upload";
 // User
 const USER = "/user";
 const INVITE = "/invite";
@@ -27,6 +28,8 @@ const routes = {
   logout: LOGOUT,
   join: JOIN,
   search: SEARCH,
+  board: BOARD,
+  upload: UPLOAD,
   user: USER,
   userfriends: (id) => {
     if (id) {

@@ -2,6 +2,7 @@ import routes from "../routes";
 import passport from "passport";
 import User from "../Model/User";
 import Room from "../Model/Rooms";
+import Post from "../Model/Post";
 import app from "../server";
 
 export const home = (req, res) => res.render("home", { subtitle: "home" });
@@ -95,5 +96,48 @@ export const sendMessage = async (req, res) => {
     res.status(400);
   } finally {
     res.end();
+  }
+};
+
+export const boardHome = async (req, res) => {
+  const allPostes = await Post.find({}).sort({ _id: -1 }).populate("creator");
+  console.log(allPostes);
+  res.render("board", { subtitle: "Board", allPostes });
+};
+
+export const getUpload = (req, res) => {
+  res.render("upload", { subtitle: "Upload" });
+};
+
+export const postUpload = async (req, res) => {
+  const {
+    body: { title, content },
+    files,
+  } = req;
+  //files 배열에  각각요소의  item.location에 위치url
+  console.log(files);
+  const imageUrls = files.map((item) => item.location);
+  const uploadUser = await User.findById(req.user.id);
+  const Day = new Date();
+  const Month = Day.getMonth() + 1;
+  const date = Day.getDate();
+  Day.setHours(day.getHours() + 9);
+  const DBDay = `${Day.getFullYear()}-${Month < 10 ? `0${Month}` : Month}-${
+    date < 10 ? `0${date}` : date
+  }`;
+  try {
+    const newPost = await Post.create({
+      creator: req.user.id,
+      title,
+      content,
+      imageUrls,
+      time: DBDay,
+    });
+    uploadUser.posts.push(newPost);
+    //uploadUser.save();
+    res.redirect("/board");
+  } catch (error) {
+    console.log(error);
+    res.redirect("/board/upload");
   }
 };
