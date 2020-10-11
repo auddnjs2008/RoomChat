@@ -100,9 +100,46 @@ export const sendMessage = async (req, res) => {
 };
 
 export const boardHome = async (req, res) => {
-  const allPostes = await Post.find({}).sort({ _id: -1 }).populate("creator");
-  console.log(allPostes);
-  res.render("board", { subtitle: "Board", allPostes });
+  const {
+    query: { page },
+  } = req;
+  let realPage = parseInt(page);
+
+  const allPostes = await Post.find({}).sort({ _id: -1 });
+  // 1페이지당 게시물 5개  5페이지 씩 묶음
+  const allNumber = allPostes.length;
+  const fivePostes = parseInt(allNumber / 5);
+
+  const allPageNumber = allNumber % 5 ? fivePostes + 1 : fivePostes;
+
+  //5페이지씩 묶음의 개수
+  let BundleNumber = parseInt(allNumber / 25) + 1;
+  if (allNumber % 25 === 0) BundleNumber = BundleNumber - 1;
+
+  // 현재 번들
+  let nowBundle = parseInt(realPage / 5) + 1;
+  if (realPage % 5 === 0) nowBundle = nowBundle - 1;
+
+  let startIndex = 5 * nowBundle - 4;
+  let finishIndex = startIndex + 5;
+  if (finishIndex > allPageNumber) finishIndex = allPageNumber + 1;
+
+  const nowPage = await Post.find({})
+    .sort({ _id: -1 })
+    .skip(realPage * 5 - 5)
+    .limit(5)
+    .populate("creator");
+
+  res.render("board", {
+    subtitle: "Board",
+    allPostes,
+    nowPage,
+    BundleNumber,
+    nowBundle,
+    startIndex,
+    finishIndex,
+    page: realPage,
+  });
 };
 
 export const getUpload = (req, res) => {
@@ -121,7 +158,7 @@ export const postUpload = async (req, res) => {
   const Day = new Date();
   const Month = Day.getMonth() + 1;
   const date = Day.getDate();
-  Day.setHours(day.getHours() + 9);
+  Day.setHours(Day.getHours() + 9);
   const DBDay = `${Day.getFullYear()}-${Month < 10 ? `0${Month}` : Month}-${
     date < 10 ? `0${date}` : date
   }`;
@@ -140,4 +177,14 @@ export const postUpload = async (req, res) => {
     console.log(error);
     res.redirect("/board/upload");
   }
+};
+
+export const getPostDetail = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+
+  const post = await Post.findById(id).populate("creator");
+
+  res.render("postDetail", { subtitle: "postDetail", post });
 };

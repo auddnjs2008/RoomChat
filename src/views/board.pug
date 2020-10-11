@@ -2,17 +2,35 @@ extends layouts/main
 
 block content 
     .BoardWrapper
-        a(href="/board/upload").boardUpload  Upload
+        nav.BoardMenu
+            a(href="#").postes Home
+            a(href="#").shareEmail Email Share
+            a(href="#").myPostes My Postes 
+            a(href="/board/upload").boardUpload  Upload
         ul.BoardItems
             if(allPostes.length !== 0)
-                each post in allPostes
-                    .postWrapper
-                        .postCreator
-                            if(post.creator.avatarUrl)
-                                img(src=post.creator.avatarUrl)
-                            else
-                                .creatorIcon
-                                    <i class="fas fa-user-alt"></i>
-                            .creatorName=post.creator.name
-                        .postTitle=post.title
-                        .postTime=post.time
+                each post in nowPage
+                    li.postWrapper
+                        a.postLink(href=`/board/${post.id}`)
+
+                            .postCreator
+                                if(post.creator.avatarUrl)
+                                    img(src=post.creator.avatarUrl)
+                                else
+                                    .creatorIcon
+                                        <i class="fas fa-user-alt"></i>
+                                .creatorName=post.creator.name
+                            .postTitle=post.title
+                            .postTime=post.time
+        ul.postNumber
+            a(href=`/board?page=${nowBundle > 1 ? startIndex-5: 1}`).leftBtn
+                <i class="fas fa-angle-left"></i>
+            -for(let i =startIndex; i<finishIndex; i++)
+                if(page === i)
+                    li.nowPage.strongPage
+                        a(href=`/board?page=${i}`)=i
+                else
+                    li.nowPage
+                        a(href=`/board?page=${i}`)=i        
+            a(href=`/board?page=${BundleNumber-1 >= nowBundle ? startIndex+5 : 1 }`).rightBtn
+                <i class="fas fa-angle-right"></i>                                             

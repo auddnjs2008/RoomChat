@@ -1,15 +1,118 @@
 .BoardWrapper {
   width: 100%;
-  height: 100vh;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 85vh;
   background-color: white;
   position: relative;
-  .boardUpload {
+  .BoardMenu {
     position: absolute;
     top: 0;
     right: 0;
-    border: 1px solid black;
+
     padding: 10px;
+    width: 100%;
+    height: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    align-items: center;
     cursor: pointer;
-    color: black;
+    a {
+      color: black;
+    }
+  }
+
+  ul.BoardItems {
+    position: absolute;
+    top: 100px;
+
+    li {
+      width: 100%;
+      margin-bottom: 10px;
+      a {
+        color: black;
+        display: grid;
+        gap: 5px;
+        grid-template-columns: 1fr 5fr 1fr;
+
+        width: 100%;
+
+        .postCreator {
+          justify-self: center;
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 5px;
+          }
+          .creatorIcon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+
+            i {
+              font-size: 35px;
+            }
+          }
+          .creatorName {
+            width: 100%;
+            text-align: center;
+            color: black;
+          }
+        }
+        .postTitle {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          padding: 5px;
+          width: 100%;
+          height: 50px;
+          border: 2px solid #f1c40f;
+          border-radius: 20px;
+        }
+        .postTime {
+          font-size: 15px;
+          align-self: center;
+        }
+      }
+    }
+  }
+
+  ul.postNumber {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 50px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+    li.nowPage.strongPage {
+      a {
+        color: #f1c40f;
+      }
+    }
+    li {
+      a {
+        color: black;
+      }
+    }
+    a {
+      color: black;
+      i {
+        font-size: 40px;
+      }
+    }
   }
 }

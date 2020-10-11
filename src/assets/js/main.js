@@ -10,6 +10,7 @@ import "./roomsDesignChange";
 import "./makeRoom";
 import "./usersSliderBar";
 import "./usersDeisgnChange";
+import "./postCommentChange";
 //footer 설정
 
 const footer = document.querySelector(".footer__nav");

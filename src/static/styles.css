@@ -735,17 +735,174 @@ table {
 
 .BoardWrapper {
   width: 100%;
-  height: 100vh;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 85vh;
   background-color: white;
   position: relative; }
-  .BoardWrapper .boardUpload {
+  .BoardWrapper .BoardMenu {
     position: absolute;
     top: 0;
     right: 0;
-    border: 1px solid black;
     padding: 10px;
+    width: 100%;
+    height: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    align-items: center;
+    cursor: pointer; }
+    .BoardWrapper .BoardMenu a {
+      color: black; }
+  .BoardWrapper ul.BoardItems {
+    position: absolute;
+    top: 100px; }
+    .BoardWrapper ul.BoardItems li {
+      width: 100%;
+      margin-bottom: 10px; }
+      .BoardWrapper ul.BoardItems li a {
+        color: black;
+        display: grid;
+        gap: 5px;
+        grid-template-columns: 1fr 5fr 1fr;
+        width: 100%; }
+        .BoardWrapper ul.BoardItems li a .postCreator {
+          justify-self: center; }
+          .BoardWrapper ul.BoardItems li a .postCreator img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 5px; }
+          .BoardWrapper ul.BoardItems li a .postCreator .creatorIcon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px; }
+            .BoardWrapper ul.BoardItems li a .postCreator .creatorIcon i {
+              font-size: 35px; }
+          .BoardWrapper ul.BoardItems li a .postCreator .creatorName {
+            width: 100%;
+            text-align: center;
+            color: black; }
+        .BoardWrapper ul.BoardItems li a .postTitle {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          padding: 5px;
+          width: 100%;
+          height: 50px;
+          border: 2px solid #f1c40f;
+          border-radius: 20px; }
+        .BoardWrapper ul.BoardItems li a .postTime {
+          font-size: 15px;
+          align-self: center; }
+  .BoardWrapper ul.postNumber {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px; }
+    .BoardWrapper ul.postNumber li.nowPage.strongPage a {
+      color: #f1c40f; }
+    .BoardWrapper ul.postNumber li a {
+      color: black; }
+    .BoardWrapper ul.postNumber a {
+      color: black; }
+      .BoardWrapper ul.postNumber a i {
+        font-size: 40px; }
+
+.postDetailWrapper {
+  position: relative;
+  color: white;
+  border: 10px solid white;
+  padding: 5px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 3fr 3fr 50px;
+  gap: 10px;
+  max-width: 600px;
+  height: 85vh;
+  margin: 0 auto; }
+  .postDetailWrapper .postCreator {
+    font-size: 30px; }
+    .postDetailWrapper .postCreator span {
+      margin-left: 20px;
+      font-size: 18px; }
+  .postDetailWrapper .postTitle {
+    font-size: 30px; }
+    .postDetailWrapper .postTitle span {
+      margin-left: 20px;
+      font-size: 18px; }
+  .postDetailWrapper .postImageWrapper {
+    border: 5px solid #f1c40f;
+    border-radius: 20px;
+    max-width: 600px;
+    height: 100%;
+    overflow: auto; }
+    .postDetailWrapper .postImageWrapper::-webkit-scrollbar {
+      width: 15px; }
+    .postDetailWrapper .postImageWrapper::-webkit-scrollbar-track {
+      background-color: grey;
+      border-radius: 10px;
+      box-shadow: inset 0px 0px 5px white; }
+    .postDetailWrapper .postImageWrapper::-webkit-scrollbar-thumb {
+      background-color: #2f3542;
+      border-radius: 10px;
+      background-clip: padding-box;
+      border: 2px solid transparent; }
+    .postDetailWrapper .postImageWrapper .postImageDesign {
+      padding: 20px;
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      justify-items: center;
+      width: 100%; }
+      .postDetailWrapper .postImageWrapper .postImageDesign img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover; }
+  .postDetailWrapper .postContent {
+    overflow: auto;
+    padding: 5px; }
+    .postDetailWrapper .postContent::-webkit-scrollbar {
+      width: 15px; }
+    .postDetailWrapper .postContent::-webkit-scrollbar-track {
+      background-color: grey;
+      border-radius: 10px;
+      box-shadow: inset 0px 0px 5px white; }
+    .postDetailWrapper .postContent::-webkit-scrollbar-thumb {
+      background-color: #2f3542;
+      border-radius: 10px;
+      background-clip: padding-box;
+      border: 2px solid transparent; }
+  .postDetailWrapper .commentButton {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    color: black; }
+    width: 100px;
+    height: 30px;
+    border: 3px solid white;
+    border-radius: 10px; }
+
+.changePostShow {
+  display: none; }
+
+.postCommentWrapper ul.postCommentes {
+  max-width: 600px;
+  height: 80vh;
+  border: 1px solid black; }
 
 .formContainer {
   margin: 0 auto;

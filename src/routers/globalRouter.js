@@ -12,6 +12,7 @@ import {
   boardHome,
   getUpload,
   postUpload,
+  getPostDetail,
 } from "../Controller/globalController";
 
 import { multipleImage } from "../localMiddleware";
@@ -35,4 +36,6 @@ globalRouter.get(routes.board, boardHome);
 
 globalRouter.get(routes.upload, getUpload);
 globalRouter.post(routes.upload, multipleImage, postUpload);
+
+globalRouter.get(routes.post, getPostDetail);
 export default globalRouter;

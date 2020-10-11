@@ -1,0 +1,23 @@
+extends layouts/main
+
+block content
+    .postDetailWrapper
+        .postCreator creator
+            span=post.creator.name
+        .postTitle  Title
+            span=post.title
+        if(post.imageUrls.length !== 0)    
+            .postImageWrapper
+                .postImageDesign
+                    each image in post.imageUrls
+                        img(src=image)
+        .postContent=post.content
+        .commentButton Comment                                               
+
+    
+    .postCommentWrapper.changePostShow
+        ul.postCommentes
+        form.formContainer
+            input(type="text" placeholder="Comment.." name="comment")
+            input(type="submit" value="Submit")
+        .postContentBtn  Back to Post    

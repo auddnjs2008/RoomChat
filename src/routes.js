@@ -7,6 +7,7 @@ const JOIN = "/join";
 const SEARCH = "/search";
 const BOARD = "/board";
 const UPLOAD = "/board/upload";
+const POST = "/board/:id";
 // User
 const USER = "/user";
 const INVITE = "/invite";
@@ -29,6 +30,7 @@ const routes = {
   join: JOIN,
   search: SEARCH,
   board: BOARD,
+  post: POST,
   upload: UPLOAD,
   user: USER,
   userfriends: (id) => {
