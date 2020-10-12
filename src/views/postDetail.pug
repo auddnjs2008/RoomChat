@@ -2,7 +2,7 @@ extends layouts/main
 
 block content
     .postDetailWrapper
-        .postCreator creator
+        .postCreator Creator
             span=post.creator.name
         .postTitle  Title
             span=post.title
@@ -12,12 +12,28 @@ block content
                     each image in post.imageUrls
                         img(src=image)
         .postContent=post.content
-        .commentButton Comment                                               
-
+        if(loggedUser.id !== post.creator.id)
+            .commentButton Comment                                               
+        else
+            .buttonWrapper
+                a(href=`/board/${post.id}/edit`).commentEdit Edit
+                .commentButton Comment
+                .commentDelete Delete    
     
     .postCommentWrapper.changePostShow
         ul.postCommentes
+           if(commentes.length !== 0)
+                each comment in commentes
+                    li.comment
+                        .commentProfile
+                            if(comment.creator.avatarUrl)
+                                img(src=comment.creator.avatarUrl).commentImage
+                            else
+                                .commentIcon
+                                    <i class="fas fa-user-alt"></i>
+                            .commentName=comment.creator.name
+                        .commentContent=comment.message
         form.formContainer
-            input(type="text" placeholder="Comment.." name="comment")
+            input(type="text" placeholder="Comment.." name="comment").commentInput
             input(type="submit" value="Submit")
         .postContentBtn  Back to Post    

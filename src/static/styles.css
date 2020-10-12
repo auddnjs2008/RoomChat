@@ -885,7 +885,9 @@ table {
       border-radius: 10px;
       background-clip: padding-box;
       border: 2px solid transparent; }
-  .postDetailWrapper .commentButton {
+  .postDetailWrapper .commentButton,
+  .postDetailWrapper .commentEdit,
+  .postDetailWrapper .commentDelete {
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -895,14 +897,81 @@ table {
     height: 30px;
     border: 3px solid white;
     border-radius: 10px; }
+  .postDetailWrapper .buttonWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center; }
 
 .changePostShow {
   display: none; }
 
-.postCommentWrapper ul.postCommentes {
-  max-width: 600px;
-  height: 80vh;
-  border: 1px solid black; }
+.postCommentWrapper {
+  position: relative; }
+  .postCommentWrapper ul.postCommentes {
+    max-width: 600px;
+    height: 80vh;
+    margin: 0 auto;
+    border: 3px solid white;
+    margin-bottom: 5px;
+    padding: 10px 0px;
+    overflow: auto; }
+    .postCommentWrapper ul.postCommentes .instantLi {
+      margin: 0 auto;
+      width: 90%;
+      height: 70px;
+      border: 1px solid white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px; }
+    .postCommentWrapper ul.postCommentes li {
+      display: grid;
+      grid-template-columns: 1fr 5fr;
+      color: white;
+      height: 70px;
+      margin-bottom: 10px; }
+      .postCommentWrapper ul.postCommentes li .commentProfile {
+        justify-self: center;
+        text-align: center; }
+        .postCommentWrapper ul.postCommentes li .commentProfile img {
+          width: 50px;
+          height: 50px;
+          margin-bottom: 5px; }
+        .postCommentWrapper ul.postCommentes li .commentProfile .commentIcon {
+          width: 50px;
+          height: 50px;
+          background-color: #f1c40f;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 5px; }
+          .postCommentWrapper ul.postCommentes li .commentProfile .commentIcon i {
+            font-size: 30px; }
+      .postCommentWrapper ul.postCommentes li .commentContent {
+        align-self: center; }
+  .postCommentWrapper .formContainer {
+    width: 100%; }
+    .postCommentWrapper .formContainer input[type="text"] {
+      width: 500px;
+      height: 30px;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      padding: 5px; }
+    .postCommentWrapper .formContainer input[type="submit"] {
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      border: none;
+      outline: none; }
+  .postCommentWrapper .postContentBtn {
+    position: absolute;
+    top: 0;
+    color: white;
+    font-size: 30px;
+    cursor: pointer; }
 
 .formContainer {
   margin: 0 auto;
@@ -1420,6 +1489,20 @@ table {
       top: 60%;
       left: 50%;
       transform: translateX(-50%); }
+
+.postCommentWrapper ul.postCommentes::-webkit-scrollbar {
+  width: 15px; }
+
+.postCommentWrapper ul.postCommentes::-webkit-scrollbar-track {
+  background-color: grey;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white; }
+
+.postCommentWrapper ul.postCommentes::-webkit-scrollbar-thumb {
+  background-color: #2f3542;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;

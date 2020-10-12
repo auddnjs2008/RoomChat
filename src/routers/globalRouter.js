@@ -13,6 +13,8 @@ import {
   getUpload,
   postUpload,
   getPostDetail,
+  getPostEdit,
+  postPostEdit,
 } from "../Controller/globalController";
 
 import { multipleImage } from "../localMiddleware";
@@ -38,4 +40,7 @@ globalRouter.get(routes.upload, getUpload);
 globalRouter.post(routes.upload, multipleImage, postUpload);
 
 globalRouter.get(routes.post, getPostDetail);
+
+globalRouter.get(routes.postedit, getPostEdit);
+globalRouter.post(routes.postedit, postPostEdit);
 export default globalRouter;

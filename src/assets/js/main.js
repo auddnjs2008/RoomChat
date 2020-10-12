@@ -11,6 +11,8 @@ import "./makeRoom";
 import "./usersSliderBar";
 import "./usersDeisgnChange";
 import "./postCommentChange";
+import "./postComment";
+import "./postDelete";
 //footer 설정
 
 const footer = document.querySelector(".footer__nav");

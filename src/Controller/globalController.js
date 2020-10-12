@@ -3,6 +3,7 @@ import passport from "passport";
 import User from "../Model/User";
 import Room from "../Model/Rooms";
 import Post from "../Model/Post";
+import Comment from "../Model/Comment";
 import app from "../server";
 
 export const home = (req, res) => res.render("home", { subtitle: "home" });
@@ -152,7 +153,7 @@ export const postUpload = async (req, res) => {
     files,
   } = req;
   //files 배열에  각각요소의  item.location에 위치url
-  console.log(files);
+
   const imageUrls = files.map((item) => item.location);
   const uploadUser = await User.findById(req.user.id);
   const Day = new Date();
@@ -184,7 +185,78 @@ export const getPostDetail = async (req, res) => {
     params: { id },
   } = req;
 
-  const post = await Post.findById(id).populate("creator");
+  const post = await Post.findById(id).populate("creator").populate("comments");
+  const comment = await Post.findById(id).populate({
+    path: "comments",
+    populate: { path: "creator" },
+  });
 
-  res.render("postDetail", { subtitle: "postDetail", post });
+  res.render("postDetail", {
+    subtitle: "postDetail",
+    post,
+    commentes: comment.comments,
+    user: req.user.id,
+  });
+};
+
+export const postAddComment = async (req, res) => {
+  const {
+    body: { comment, postId },
+  } = req;
+  try {
+    const newComment = await Comment.create({
+      creator: req.user.id,
+      message: comment,
+    });
+    const nowPost = await Post.findById(postId);
+    nowPost.comments.push(newComment.id);
+    nowPost.save();
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postDelete = async (req, res) => {
+  const {
+    body: { postId },
+  } = req;
+  try {
+    await Post.findOneAndRemove({ _id: postId });
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const getPostEdit = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const post = await Post.findById(id);
+    res.render("postEdit", { subtitle: "postEdit", post });
+  } catch (error) {
+    console.log(error);
+    res.redirect(`/board/${id}/edit`);
+  }
+};
+
+export const postPostEdit = async (req, res) => {
+  const {
+    params: { id },
+    body: { title, content },
+  } = req;
+  try {
+    await Post.findOneAndUpdate({ _id: id }, { title, content });
+    res.redirect(`/board/${id}`);
+  } catch (error) {
+    console.log(error);
+    res.redirect(`/board/${id}/edit`);
+    s;
+  }
 };
