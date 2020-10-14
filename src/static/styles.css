@@ -621,6 +621,11 @@ table {
   .useresWrapper .useresDesignWrapper {
     width: 100%;
     display: flex; }
+    .useresWrapper .useresDesignWrapper .userNoneAlarm {
+      font-size: 40px;
+      color: white;
+      font-weight: 700;
+      text-align: center; }
     .useresWrapper .useresDesignWrapper .userBlock {
       all: unset;
       width: 200px;
@@ -741,30 +746,16 @@ table {
 
 .BoardWrapper {
   width: 100%;
-  max-width: 600px;
+  max-width: 1fr;
   margin: 0 auto;
-  height: 85vh;
+  margin-top: 30px;
+  height: 80vh;
   background-color: white;
-  position: relative; }
-  .BoardWrapper .BoardMenu {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px;
-    width: 100%;
-    height: 50px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
-    align-items: center;
-    cursor: pointer; }
-    .BoardWrapper .BoardMenu .postes {
-      background-color: #3498db; }
-    .BoardWrapper .BoardMenu a {
-      color: black; }
+  position: relative;
+  padding-left: 50px; }
   .BoardWrapper ul.BoardItems {
     position: absolute;
-    top: 100px; }
+    top: 60px; }
     .BoardWrapper ul.BoardItems li {
       width: 100%;
       margin-bottom: 10px; }
@@ -786,7 +777,7 @@ table {
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            border: 1px solid black;
+            background-color: #ffeaa7;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -832,30 +823,35 @@ table {
 
 .postDetailWrapper {
   position: relative;
-  color: white;
-  border: 10px solid white;
-  padding: 5px;
+  color: black;
+  background-color: white;
+  padding: 20px;
   display: grid;
-  grid-template-rows: 1fr 1fr 3fr 3fr 50px;
+  grid-template-rows: 1fr 1fr 3fr 3fr 30px;
   gap: 10px;
-  max-width: 600px;
+  max-width: 900px;
   height: 85vh;
   margin: 0 auto; }
   .postDetailWrapper .postCreator {
-    font-size: 30px; }
+    font-size: 30px;
+    font-weight: 600;
+    color: #f1c40f; }
     .postDetailWrapper .postCreator span {
       margin-left: 20px;
-      font-size: 18px; }
+      font-size: 18px;
+      color: black; }
   .postDetailWrapper .postTitle {
+    font-weight: 600;
+    color: #f1c40f;
     font-size: 30px; }
     .postDetailWrapper .postTitle span {
       margin-left: 20px;
-      font-size: 18px; }
+      font-size: 18px;
+      color: black; }
   .postDetailWrapper .postImageWrapper {
-    border: 5px solid #f1c40f;
     border-radius: 20px;
-    max-width: 600px;
-    height: 100%;
+    max-width: 1fr;
+    height: 300px;
     overflow: auto; }
     .postDetailWrapper .postImageWrapper::-webkit-scrollbar {
       width: 15px; }
@@ -881,7 +877,9 @@ table {
         object-fit: cover; }
   .postDetailWrapper .postContent {
     overflow: auto;
-    padding: 5px; }
+    padding: 20px;
+    font-size: 20px;
+    line-height: 1.4; }
     .postDetailWrapper .postContent::-webkit-scrollbar {
       width: 15px; }
     .postDetailWrapper .postContent::-webkit-scrollbar-track {
@@ -896,6 +894,8 @@ table {
   .postDetailWrapper .commentButton,
   .postDetailWrapper .commentEdit,
   .postDetailWrapper .commentDelete {
+    color: black;
+    background-color: #bdc3c7;
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -903,7 +903,6 @@ table {
     cursor: pointer;
     width: 100px;
     height: 30px;
-    border: 3px solid white;
     border-radius: 10px; }
   .postDetailWrapper .buttonWrapper {
     display: grid;
@@ -982,6 +981,7 @@ table {
     cursor: pointer; }
 
 .emailShareDesign {
+  padding-top: 30px;
   display: grid;
   grid-template-columns: 7fr 1fr;
   gap: 30px;
@@ -989,13 +989,27 @@ table {
 
 .emailShareWrapper {
   position: relative;
-  height: 85vh;
-  border: 1px solid white;
+  height: 80vh;
+  overflow: hidden;
   background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   padding: 20px; }
   .emailShareWrapper ul.email {
-    height: 85vh;
+    width: 1fr;
+    height: 75vh;
     overflow: auto; }
+    .emailShareWrapper ul.email li.instantShare {
+      width: 50%;
+      height: 50px;
+      font-weight: 600;
+      background-color: #f1c40f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      border-top-left-radius: 0px;
+      padding: 10px; }
     .emailShareWrapper ul.email li {
       display: flex;
       align-items: center;
@@ -1048,11 +1062,8 @@ table {
   cursor: pointer; }
 
 .emailImage {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 500px;
-  height: 500px;
+  width: 1fr;
+  height: 1fr;
   background-color: transparent;
   background-image: url("https://wewechat.s3-ap-northeast-1.amazonaws.com/images/%EC%9A%B0%EC%A3%BC%EC%9D%B8.png");
   background-size: cover;
@@ -1064,40 +1075,81 @@ table {
     transform: translateY(-50px); }
   100% { } }
 
-.myPostWrapper ul.myPostUl {
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 5px;
-  height: 85vh;
-  overflow: auto; }
-  .myPostWrapper ul.myPostUl li a {
-    display: block;
-    width: 200px;
-    height: 200px;
-    position: relative;
-    transition: all 0.2s linear; }
-    .myPostWrapper ul.myPostUl li a:hover {
-      transform: scale(1.1, 1.1); }
-    .myPostWrapper ul.myPostUl li a img {
+.myPostWrapper {
+  margin-top: 30px; }
+  .myPostWrapper ul.myPostUl {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 5px;
+    height: 85vh;
+    overflow: auto; }
+    .myPostWrapper ul.myPostUl li a {
+      display: block;
       width: 200px;
       height: 200px;
-      position: absolute;
-      top: 0;
-      object-fit: cover;
-      border-radius: 50%;
-      z-index: -1;
-      opacity: 0.6; }
-    .myPostWrapper ul.myPostUl li a .mypostImage {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      border: 5px solid white; }
-    .myPostWrapper ul.myPostUl li a .postContent {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); }
+      position: relative;
+      transition: all 0.2s linear; }
+      .myPostWrapper ul.myPostUl li a:hover {
+        transform: scale(1.1, 1.1); }
+      .myPostWrapper ul.myPostUl li a img {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 0;
+        object-fit: cover;
+        border-radius: 50%;
+        z-index: -1;
+        opacity: 0.6; }
+      .myPostWrapper ul.myPostUl li a .mypostImage {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 5px solid white; }
+      .myPostWrapper ul.myPostUl li a .postContent {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); }
+
+.uploadContainer,
+.postEditWrapper {
+  margin: 0 auto;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  margin-top: 30px;
+  background-image: url("https://wewechat.s3-ap-northeast-1.amazonaws.com/images/%EC%9A%B0%EC%A3%BC%EC%9D%B82.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .uploadContainer .formContainer form label.imageLabel,
+  .postEditWrapper .formContainer form label.imageLabel {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px; }
+  .uploadContainer .formContainer form input[type="text"],
+  .postEditWrapper .formContainer form input[type="text"] {
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white; }
+    .uploadContainer .formContainer form input[type="text"]::placeholder,
+    .postEditWrapper .formContainer form input[type="text"]::placeholder {
+      color: white; }
+  .uploadContainer .formContainer form textarea,
+  .postEditWrapper .formContainer form textarea {
+    width: 400px;
+    height: 400px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.5); }
+  .uploadContainer .formContainer form input[type="submit"],
+  .postEditWrapper .formContainer form input[type="submit"] {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white; }
 
 .formContainer {
   margin: 0 auto;
@@ -1364,16 +1416,6 @@ table {
       top: 60%;
       left: 50%;
       transform: translateX(-50%); }
-
-@keyframes spin {
-  0% {
-    transform: rotateY(0deg); }
-  50% {
-    transform: rotateY(180deg); }
-  100% {
-    transform: rotateY(360deg); } }
-  .roomGridWrapper .roomsOutWrapper:hover {
-    animation: spin 1s linear; }
   .roomGridWrapper .changeRoomDesignBtn {
     position: absolute;
     right: 0;
@@ -1630,6 +1672,21 @@ table {
   background-clip: padding-box;
   border: 2px solid transparent; }
 
+.BoardMenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  width: 100%;
+  height: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  cursor: pointer; }
+  .BoardMenu a {
+    color: black; }
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   padding: 20px;
@@ -1666,3 +1723,12 @@ a {
   width: 100%;
   text-align: center;
   font-size: 20px; }
+
+.BoardMenu {
+  z-index: 1;
+  background-color: transparent;
+  margin-bottom: 100px; }
+  .BoardMenu a {
+    color: white;
+    font-size: 20px;
+    padding: 5px; }

@@ -28,7 +28,12 @@
   .useresDesignWrapper {
     width: 100%;
     display: flex;
-
+    .userNoneAlarm {
+      font-size: 40px;
+      color: white;
+      font-weight: 700;
+      text-align: center;
+    }
     .userBlock {
       all: unset;
 

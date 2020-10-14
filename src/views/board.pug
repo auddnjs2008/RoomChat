@@ -1,13 +1,8 @@
 extends layouts/main
 
 block content 
+    include ./partials/boardHeader
     .BoardWrapper
-        nav.BoardMenu
-            a(href="/board?page=1").postes Home
-            a(href="/board/emailshare").shareEmail Email Share
-            a(href=`/board/${loggedUser.id}/mypost`).myPostes My Postes 
-            a(href="/board/upload").boardUpload  Upload
-        
         .BoardHome
             ul.BoardItems
                 if(allPostes.length !== 0)

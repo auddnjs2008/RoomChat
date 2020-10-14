@@ -6,6 +6,7 @@ const shareUl = document.querySelector(".email");
 const shareEmail = (email) => {
   const li = document.createElement("li");
   li.innerText = `${email} 친구 추가 부탁드립니다.`;
+  li.className = "instantShare";
   shareUl.appendChild(li);
 };
 

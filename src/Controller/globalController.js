@@ -251,6 +251,7 @@ export const postPostEdit = async (req, res) => {
     params: { id },
     body: { title, content },
   } = req;
+
   try {
     await Post.findOneAndUpdate({ _id: id }, { title, content });
     res.redirect(`/board/${id}`);
@@ -282,9 +283,11 @@ export const emailShareBtn = async (req, res) => {
 };
 
 export const getMypost = async (req, res) => {
-  let myPostes = await User.findById(req.user.id)
-    .sort({ _id: -1 })
-    .populate("posts");
+  const {
+    params: { id },
+  } = req;
+
+  let myPostes = await User.findById(id).sort({ _id: -1 }).populate("posts");
   myPostes = myPostes.posts;
   res.render("mypost", { subtitle: "mypost", postes: myPostes });
 };

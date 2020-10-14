@@ -1,34 +1,15 @@
 .BoardWrapper {
   width: 100%;
-  max-width: 600px;
+  max-width: 1fr;
   margin: 0 auto;
-  height: 85vh;
+  margin-top: 30px;
+  height: 80vh;
   background-color: white;
   position: relative;
-  .BoardMenu {
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    padding: 10px;
-    width: 100%;
-    height: 50px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
-    align-items: center;
-    .postes {
-      background-color: #3498db;
-    }
-    cursor: pointer;
-    a {
-      color: black;
-    }
-  }
-
+  padding-left: 50px;
   ul.BoardItems {
     position: absolute;
-    top: 100px;
+    top: 60px;
 
     li {
       width: 100%;
@@ -54,7 +35,8 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            border: 1px solid black;
+
+            background-color: #ffeaa7;
             display: flex;
             justify-content: center;
             align-items: center;

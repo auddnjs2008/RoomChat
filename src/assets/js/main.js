@@ -14,6 +14,9 @@ import "./postCommentChange";
 import "./postComment";
 import "./postDelete";
 import "./emailShare";
+import "./boardHeader";
+import "./deleteRoom";
+
 //footer 설정
 
 const footer = document.querySelector(".footer__nav");

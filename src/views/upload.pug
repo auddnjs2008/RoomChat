@@ -1,6 +1,7 @@
 extends layouts/main
 
 block content
+    include ./partials/boardHeader
     .uploadContainer
         .formContainer
             form(action="/board/upload",method="post" enctype="multipart/form-data")
@@ -9,3 +10,4 @@ block content
                 input(type="text", name="title" placeholder="Title")
                 textarea(name="content" value="Content")
                 input(type="submit" value="Submit")
+    <a href='https://pngtree.com/so/부인이'>부인이 png from pngtree.com</a>

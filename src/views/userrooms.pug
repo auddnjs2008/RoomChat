@@ -8,6 +8,7 @@ block content
         .roomGridWrapper    
             each room,index in fixedRooms
                 a(href=`/user/${loggedUser.id}/chat/${room.id}`).roomsOutWrapper
+                   
                     if room.avatarUrl
                         .newRoomContainer
                             
