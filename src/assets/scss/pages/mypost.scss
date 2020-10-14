@@ -1,0 +1,45 @@
+.myPostWrapper {
+  ul.myPostUl {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 5px;
+    height: 85vh;
+    overflow: auto;
+    @extend %scrollBar;
+    li {
+      a {
+        display: block;
+        width: 200px;
+        height: 200px;
+        position: relative;
+        &:hover {
+          transform: scale(1.1, 1.1);
+        }
+        transition: all 0.2s linear;
+        img {
+          width: 200px;
+          height: 200px;
+          position: absolute;
+          top: 0;
+          object-fit: cover;
+          border-radius: 50%;
+          z-index: -1;
+          opacity: 0.6;
+        }
+        .mypostImage {
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          border: 5px solid white;
+        }
+        .postContent {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+}

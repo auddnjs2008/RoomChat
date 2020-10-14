@@ -66,7 +66,9 @@ export const userProfile = async (req, res) => {
     params: { id },
   } = req;
   const user = await User.findById(id);
-  res.render("profile", { subtitle: "Profile", user });
+  const reqUser = await User.findById(req.user.id);
+  const isFriend = reqUser.friends.includes(user.id);
+  res.render("profile", { subtitle: "Profile", user, isFriend });
 };
 
 export const getEditProfile = (req, res) => {

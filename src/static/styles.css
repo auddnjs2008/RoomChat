@@ -242,10 +242,12 @@ table {
     text-align: center;
     padding: 30px;
     font-size: 18px; }
-  .profileWrapper .sendBtn {
+  .profileWrapper .sendBtn,
+  .profileWrapper .profilePost,
+  .profileWrapper .profileAlonePost {
     position: absolute;
     bottom: 20px;
-    left: 50%;
+    left: 40%;
     transform: translateX(-50%);
     padding: 8px;
     border-radius: 20px;
@@ -253,6 +255,10 @@ table {
     text-align: center;
     color: black;
     cursor: pointer; }
+  .profileWrapper .profilePost {
+    left: 70%; }
+  .profileWrapper .profileAlonePost {
+    left: 50%; }
 
 .chatRoom {
   width: 100%;
@@ -752,6 +758,8 @@ table {
     justify-items: center;
     align-items: center;
     cursor: pointer; }
+    .BoardWrapper .BoardMenu .postes {
+      background-color: #3498db; }
     .BoardWrapper .BoardMenu a {
       color: black; }
   .BoardWrapper ul.BoardItems {
@@ -972,6 +980,124 @@ table {
     color: white;
     font-size: 30px;
     cursor: pointer; }
+
+.emailShareDesign {
+  display: grid;
+  grid-template-columns: 7fr 1fr;
+  gap: 30px;
+  align-items: center; }
+
+.emailShareWrapper {
+  position: relative;
+  height: 85vh;
+  border: 1px solid white;
+  background-color: white;
+  padding: 20px; }
+  .emailShareWrapper ul.email {
+    height: 85vh;
+    overflow: auto; }
+    .emailShareWrapper ul.email li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px; }
+      .emailShareWrapper ul.email li .shareProfile {
+        text-align: center;
+        margin-right: 15px; }
+        .emailShareWrapper ul.email li .shareProfile img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-bottom: 5px; }
+        .emailShareWrapper ul.email li .shareProfile .shareAvatar {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background-color: #ffeaa7;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 5px; }
+          .emailShareWrapper ul.email li .shareProfile .shareAvatar i {
+            font-size: 30px; }
+      .emailShareWrapper ul.email li a.shareProfile {
+        color: black;
+        border-radius: 10px;
+        padding: 5px;
+        background-color: #bdc3c7;
+        margin-left: 20px; }
+      .emailShareWrapper ul.email li .shareMessage {
+        height: 50px;
+        font-weight: 600;
+        background-color: #f1c40f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        border-top-left-radius: 0px;
+        padding: 10px; }
+
+.emailButton {
+  width: 150px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #bdc3c7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; }
+
+.emailImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  background-color: transparent;
+  background-image: url("https://wewechat.s3-ap-northeast-1.amazonaws.com/images/%EC%9A%B0%EC%A3%BC%EC%9D%B8.png");
+  background-size: cover;
+  animation: space 5s linear infinite; }
+
+@keyframes space {
+  0% { }
+  50% {
+    transform: translateY(-50px); }
+  100% { } }
+
+.myPostWrapper ul.myPostUl {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 5px;
+  height: 85vh;
+  overflow: auto; }
+  .myPostWrapper ul.myPostUl li a {
+    display: block;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transition: all 0.2s linear; }
+    .myPostWrapper ul.myPostUl li a:hover {
+      transform: scale(1.1, 1.1); }
+    .myPostWrapper ul.myPostUl li a img {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      top: 0;
+      object-fit: cover;
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0.6; }
+    .myPostWrapper ul.myPostUl li a .mypostImage {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid white; }
+    .myPostWrapper ul.myPostUl li a .postContent {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
 
 .formContainer {
   margin: 0 auto;
@@ -1490,15 +1616,15 @@ table {
       left: 50%;
       transform: translateX(-50%); }
 
-.postCommentWrapper ul.postCommentes::-webkit-scrollbar {
+.postCommentWrapper ul.postCommentes::-webkit-scrollbar, .emailShareWrapper ul.email::-webkit-scrollbar, .myPostWrapper ul.myPostUl::-webkit-scrollbar {
   width: 15px; }
 
-.postCommentWrapper ul.postCommentes::-webkit-scrollbar-track {
+.postCommentWrapper ul.postCommentes::-webkit-scrollbar-track, .emailShareWrapper ul.email::-webkit-scrollbar-track, .myPostWrapper ul.myPostUl::-webkit-scrollbar-track {
   background-color: grey;
   border-radius: 10px;
   box-shadow: inset 0px 0px 5px white; }
 
-.postCommentWrapper ul.postCommentes::-webkit-scrollbar-thumb {
+.postCommentWrapper ul.postCommentes::-webkit-scrollbar-thumb, .emailShareWrapper ul.email::-webkit-scrollbar-thumb, .myPostWrapper ul.myPostUl::-webkit-scrollbar-thumb {
   background-color: #2f3542;
   border-radius: 10px;
   background-clip: padding-box;

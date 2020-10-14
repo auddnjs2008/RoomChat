@@ -1,0 +1,22 @@
+extends layouts/main
+
+block content
+    .emailShareDesign
+        .emailShareWrapper
+            ul.email
+                if(Useres.length !==0)
+                    each user in Useres
+                        li
+                            .shareProfile
+                                if(user.avatarUrl)
+                                    img(src=user.avatarUrl)
+                                else
+                                    .shareAvatar
+                                        <i class="fas fa-user-alt"></i>
+                                .shareName=user.name
+                            .shareMessage=user.email+"  친구 추가 부탁드립니다."
+                            a(href=`/user/${user.id}/profile`).shareProfile  Profile 
+            .emailImage    
+        
+        .emailButton Email Share 
+   

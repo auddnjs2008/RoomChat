@@ -25,6 +25,7 @@ const UserSchema = new mongoose.Schema({
       ref: "Post",
     },
   ],
+  emailShare: Boolean,
 });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });

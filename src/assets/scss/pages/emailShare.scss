@@ -1,0 +1,103 @@
+.emailShareDesign {
+  display: grid;
+  grid-template-columns: 7fr 1fr;
+  gap: 30px;
+
+  align-items: center;
+}
+.emailShareWrapper {
+  // max-width: 600px;
+  position: relative;
+  height: 85vh;
+  border: 1px solid white;
+  background-color: white;
+  padding: 20px;
+  ul.email {
+    height: 85vh;
+    overflow: auto;
+    @extend %scrollBar;
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      .shareProfile {
+        text-align: center;
+        margin-right: 15px;
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-bottom: 5px;
+        }
+        .shareAvatar {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+
+          background-color: #ffeaa7;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 5px;
+
+          i {
+            font-size: 30px;
+          }
+        }
+      }
+      a.shareProfile {
+        color: black;
+        border-radius: 10px;
+        padding: 5px;
+        background-color: #bdc3c7;
+        margin-left: 20px;
+      }
+
+      .shareMessage {
+        height: 50px;
+        font-weight: 600;
+        background-color: #f1c40f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        border-top-left-radius: 0px;
+        padding: 10px;
+      }
+    }
+  }
+}
+.emailButton {
+  width: 150px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #bdc3c7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.emailImage {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  background-color: transparent;
+  background-image: url("https://wewechat.s3-ap-northeast-1.amazonaws.com/images/%EC%9A%B0%EC%A3%BC%EC%9D%B8.png");
+  background-size: cover;
+  @keyframes space {
+    0% {
+    }
+    50% {
+      transform: translateY(-50px);
+    }
+    100% {
+    }
+  }
+  animation: space 5s linear infinite;
+}

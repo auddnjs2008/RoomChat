@@ -18,4 +18,9 @@ block content
             .userMessage=user.message
         else
             .userMessage No message 
-        .sendBtn Send Message    
+        if(isFriend === true)
+            .sendBtn Send Message
+            a(href=`/board/${user.id}/mypost`).profilePost Postes
+        else
+            a(href=`/board/${user.id}/mypost`).profileAlonePost Postes
+                 

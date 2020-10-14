@@ -12,8 +12,8 @@ const handleCommentBtn = () => {
 };
 
 const init = () => {
-  commentBtn.addEventListener("click", handleCommentBtn);
-  postBackBtn.addEventListener("click", handleCommentBtn);
+  if (commentBtn) commentBtn.addEventListener("click", handleCommentBtn);
+  if (postBackBtn) postBackBtn.addEventListener("click", handleCommentBtn);
 };
 
 init();

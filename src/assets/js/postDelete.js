@@ -19,7 +19,7 @@ const handleDelete = () => {
 };
 
 const init = () => {
-  deleteBtn.addEventListener("click", handleDelete);
+  if (deleteBtn) deleteBtn.addEventListener("click", handleDelete);
 };
 
 init();

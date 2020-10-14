@@ -1,0 +1,19 @@
+extends layouts/main
+
+block content
+    .myPostWrapper
+        if(postes.length !== 0)
+            ul.myPostUl
+                each post in postes
+                    li
+                        a(href=`/board/${post.id}`)    
+                            .postContent
+                                if(post.title.length > 10)
+                                    .postTitle=post.title.slice(0,9)+"...."
+                                else
+                                    .postTitle=post.title
+                                .postTime=post.time
+                            if(post.imageUrls.length !== 0)
+                                img(src=post.imageUrls[0])
+                            else
+                                .mypostImage    

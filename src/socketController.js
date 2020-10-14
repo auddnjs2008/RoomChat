@@ -85,6 +85,15 @@ const socketController = (socket, io) => {
     const room = await Room.findById(location).populate("peoples");
     socket.emit("foundList", { peoples: room.peoples });
   });
+
+  // email share 에서 이메일 찾기
+  socket.on("findEmail", async () => {
+    const user = await User.findById(app.locals.user);
+    const userEmail = user.email;
+    const userTrue = user.emailShare;
+    console.log(userTrue);
+    socket.emit("foundEmail", { email: userEmail, isTrue: userTrue });
+  });
 };
 
 export default socketController;

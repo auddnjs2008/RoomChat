@@ -7,8 +7,11 @@ const JOIN = "/join";
 const SEARCH = "/search";
 const BOARD = "/board";
 const UPLOAD = "/board/upload";
+const EMAILSHARE = "/board/emailshare";
+const MYPOST = "/board/:id/mypost";
 const POST = "/board/:id";
 const POSTEDIT = "/board/:id/edit";
+
 // User
 const USER = "/user";
 const INVITE = "/invite";
@@ -26,6 +29,7 @@ const MAKERoom = "/makeRoom";
 const ROOMMESSAGE = "/room/messages";
 const ADDCOMMENt = "/board/comment";
 const POSTDELETE = "/board/delete";
+const SHAREBTN = "/email/share";
 const routes = {
   home: HOME,
   login: LOGIN,
@@ -36,6 +40,8 @@ const routes = {
   post: POST,
   upload: UPLOAD,
   postedit: POSTEDIT,
+  emailshare: EMAILSHARE,
+  mypost: MYPOST,
   user: USER,
   userfriends: (id) => {
     if (id) {
@@ -61,6 +67,7 @@ const routes = {
   roommessage: ROOMMESSAGE,
   addcomment: ADDCOMMENt,
   postdelete: POSTDELETE,
+  sharebtn: SHAREBTN,
 };
 
 export default routes;

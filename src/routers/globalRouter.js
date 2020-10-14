@@ -15,6 +15,8 @@ import {
   getPostDetail,
   getPostEdit,
   postPostEdit,
+  getEmailShare,
+  getMypost,
 } from "../Controller/globalController";
 
 import { multipleImage } from "../localMiddleware";
@@ -39,8 +41,11 @@ globalRouter.get(routes.board, boardHome);
 globalRouter.get(routes.upload, getUpload);
 globalRouter.post(routes.upload, multipleImage, postUpload);
 
+globalRouter.get(routes.emailshare, getEmailShare);
 globalRouter.get(routes.post, getPostDetail);
 
 globalRouter.get(routes.postedit, getPostEdit);
 globalRouter.post(routes.postedit, postPostEdit);
+
+globalRouter.get(routes.mypost, getMypost);
 export default globalRouter;

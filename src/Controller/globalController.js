@@ -172,7 +172,7 @@ export const postUpload = async (req, res) => {
       time: DBDay,
     });
     uploadUser.posts.push(newPost);
-    //uploadUser.save();
+    uploadUser.save();
     res.redirect("/board");
   } catch (error) {
     console.log(error);
@@ -259,4 +259,32 @@ export const postPostEdit = async (req, res) => {
     res.redirect(`/board/${id}/edit`);
     s;
   }
+};
+
+export const getEmailShare = async (req, res) => {
+  const emailUser = await User.find({ emailShare: true });
+
+  res.render("emailShare", { subtitle: "emailShare", Useres: emailUser });
+};
+
+export const emailShareBtn = async (req, res) => {
+  try {
+    const who = await User.findOneAndUpdate(
+      { _id: req.user.id },
+      { emailShare: true }
+    );
+    console.log(who);
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const getMypost = async (req, res) => {
+  let myPostes = await User.findById(req.user.id)
+    .sort({ _id: -1 })
+    .populate("posts");
+  myPostes = myPostes.posts;
+  res.render("mypost", { subtitle: "mypost", postes: myPostes });
 };

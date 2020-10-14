@@ -3,34 +3,41 @@ extends layouts/main
 block content 
     .BoardWrapper
         nav.BoardMenu
-            a(href="#").postes Home
-            a(href="#").shareEmail Email Share
-            a(href="#").myPostes My Postes 
+            a(href="/board?page=1").postes Home
+            a(href="/board/emailshare").shareEmail Email Share
+            a(href=`/board/${loggedUser.id}/mypost`).myPostes My Postes 
             a(href="/board/upload").boardUpload  Upload
-        ul.BoardItems
-            if(allPostes.length !== 0)
-                each post in nowPage
-                    li.postWrapper
-                        a.postLink(href=`/board/${post.id}`)
+        
+        .BoardHome
+            ul.BoardItems
+                if(allPostes.length !== 0)
+                    each post in nowPage
+                        li.postWrapper
+                            a.postLink(href=`/board/${post.id}`)
 
-                            .postCreator
-                                if(post.creator.avatarUrl)
-                                    img(src=post.creator.avatarUrl)
+                                .postCreator
+                                    if(post.creator.avatarUrl)
+                                        img(src=post.creator.avatarUrl)
+                                    else
+                                        .creatorIcon
+                                            <i class="fas fa-user-alt"></i>
+                                    .creatorName=post.creator.name
+                                if(post.title.length >25)
+                                    .postTitle=post.title.slice(0,24)+"......"
                                 else
-                                    .creatorIcon
-                                        <i class="fas fa-user-alt"></i>
-                                .creatorName=post.creator.name
-                            .postTitle=post.title
-                            .postTime=post.time
-        ul.postNumber
-            a(href=`/board?page=${nowBundle > 1 ? startIndex-5: 1}`).leftBtn
-                <i class="fas fa-angle-left"></i>
-            -for(let i =startIndex; i<finishIndex; i++)
-                if(page === i)
-                    li.nowPage.strongPage
-                        a(href=`/board?page=${i}`)=i
-                else
-                    li.nowPage
-                        a(href=`/board?page=${i}`)=i        
-            a(href=`/board?page=${BundleNumber-1 >= nowBundle ? startIndex+5 : 1 }`).rightBtn
-                <i class="fas fa-angle-right"></i>                                             
+                                    .postTitle=post.title
+                                .postTime=post.time
+            ul.postNumber
+                a(href=`/board?page=${nowBundle > 1 ? startIndex-5: 1}`).leftBtn
+                    <i class="fas fa-angle-left"></i>
+                -for(let i =startIndex; i<finishIndex; i++)
+                    if(page === i)
+                        li.nowPage.strongPage
+                            a(href=`/board?page=${i}`)=i
+                    else
+                        li.nowPage
+                            a(href=`/board?page=${i}`)=i        
+                a(href=`/board?page=${BundleNumber-1 >= nowBundle ? startIndex+5 : 1 }`).rightBtn
+                    <i class="fas fa-angle-right"></i>
+
+       
