@@ -16,7 +16,7 @@ const handleDelFriend = () =>{
     const userId = window.location.href.split("/profile")[0].split("user/")[1];
     delFriendAxios(userId);
     if(footer)
-        setInterval(()=>window.location.href="/",200);
+        setTimeout(()=>window.location.href=friendsLi.href.split("com")[1],200);
 }
 
 const init =() =>{
