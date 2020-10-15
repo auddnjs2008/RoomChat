@@ -4,7 +4,7 @@
   background-color: white;
   padding: 20px;
   display: grid;
-  grid-template-rows: 1fr 1fr 3fr 3fr 30px;
+  grid-template-rows: 1fr 1fr 3fr 3fr 20px;
   gap: 10px;
   max-width: 900px;
   height: 85vh;
@@ -34,7 +34,7 @@
   .postImageWrapper {
     border-radius: 20px;
     max-width: 1fr;
-    height: 300px;
+    height: 220px;
     overflow: auto;
     &::-webkit-scrollbar {
       width: 15px;

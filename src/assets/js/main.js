@@ -16,6 +16,7 @@ import "./postDelete";
 import "./emailShare";
 import "./boardHeader";
 import "./deleteRoom";
+import "./deleteFriend";
 
 //footer 설정
 

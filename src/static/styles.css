@@ -201,6 +201,20 @@ table {
   position: relative;
   margin: 0 auto;
   background-color: white; }
+  .profileWrapper .delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px; }
+    .profileWrapper .delete:hover {
+      transform: scale(1.1, 1.1); }
+  .profileWrapper .deleteTitle {
+    position: absolute;
+    top: 50px;
+    right: 2px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #e74c3c; }
   .profileWrapper .backgroundWrapper {
     width: 100%;
     height: 50%; }
@@ -380,13 +394,22 @@ table {
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px; }
 
-.chatFriendsPlus {
+.chatFriendsPlus,
+.chatOut {
   position: absolute;
   right: 20px;
   top: 20px;
   color: #eab543; }
-  .chatFriendsPlus i {
+  .chatFriendsPlus i,
+  .chatOut i {
     font-size: 50px; }
+
+.chatOut {
+  top: 80px;
+  right: 15px; }
+  .chatOut i {
+    font-size: 45px;
+    margin-bottom: 5px; }
 
 .modalAnimation {
   animation: modal 0.5s linear forwards; }
@@ -753,6 +776,32 @@ table {
   background-color: white;
   position: relative;
   padding-left: 50px; }
+  .BoardWrapper .BoardBackImage {
+    opacity: 0.7;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    height: 500px;
+    background-image: url("https://wewechat.s3-ap-northeast-1.amazonaws.com/images/%EC%9A%B0%EC%A3%BC%EB%B0%B0%EA%B2%BD.png");
+    background-size: cover;
+    background-position: center center; }
+  .BoardWrapper .BoardImage {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    width: 300px;
+    height: 300px;
+    background-image: url("https://wewechat.s3-ap-northeast-1.amazonaws.com/images/%EC%9A%B0%EC%A3%BC%EB%B9%84%ED%96%89%EC%82%AC.png");
+    background-size: cover;
+    background-position: center center;
+    animation: boardSpin 15s linear infinite; }
+
+@keyframes boardSpin {
+  0% { }
+  100% {
+    transform: rotate(360deg); } }
   .BoardWrapper ul.BoardItems {
     position: absolute;
     top: 60px; }
@@ -827,7 +876,7 @@ table {
   background-color: white;
   padding: 20px;
   display: grid;
-  grid-template-rows: 1fr 1fr 3fr 3fr 30px;
+  grid-template-rows: 1fr 1fr 3fr 3fr 20px;
   gap: 10px;
   max-width: 900px;
   height: 85vh;
@@ -851,7 +900,7 @@ table {
   .postDetailWrapper .postImageWrapper {
     border-radius: 20px;
     max-width: 1fr;
-    height: 300px;
+    height: 220px;
     overflow: auto; }
     .postDetailWrapper .postImageWrapper::-webkit-scrollbar {
       width: 15px; }
@@ -1077,6 +1126,12 @@ table {
 
 .myPostWrapper {
   margin-top: 30px; }
+  .myPostWrapper .noPost {
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+    font-size: 50px;
+    color: #e74c3c; }
   .myPostWrapper ul.myPostUl {
     padding: 20px;
     display: grid;
@@ -1416,6 +1471,16 @@ table {
       top: 60%;
       left: 50%;
       transform: translateX(-50%); }
+
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg); }
+  50% {
+    transform: rotateY(180deg); }
+  100% {
+    transform: rotateY(360deg); } }
+  .roomGridWrapper .roomsOutWrapper:hover {
+    animation: spin 1s linear; }
   .roomGridWrapper .changeRoomDesignBtn {
     position: absolute;
     right: 0;

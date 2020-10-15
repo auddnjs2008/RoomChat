@@ -91,9 +91,23 @@ const socketController = (socket, io) => {
     const user = await User.findById(app.locals.user);
     const userEmail = user.email;
     const userTrue = user.emailShare;
-    console.log(userTrue);
     socket.emit("foundEmail", { email: userEmail, isTrue: userTrue });
   });
+
+  // 채팅방을 나갈때  
+  socket.on("chatOut",async ({userId,roomId})=>{
+    const user = await User.findById(userId);
+    const room = await Room.findById(roomId);
+    
+    const outMessage = `${user.name}님이 나갔습니다`;
+    const alarmMessage = await Message.create({ message: outMessage });
+    room.messages.push(alarmMessage);
+    room.save();
+    io.sockets.in(roomSocket).emit("chatOutAlarm", {outMessage });
+    socket.leave(roomSocket);
+  })
+
+
 };
 
 export default socketController;

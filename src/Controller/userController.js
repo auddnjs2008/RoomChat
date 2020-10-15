@@ -170,3 +170,36 @@ export const postMakeRoom = async (req, res) => {
     res.redirect("/user/invite");
   }
 };
+
+
+export const postChatOut = async (req,res) =>{
+  const{
+    body:{ userId,roomId}
+  }=req;
+  const user = await User.findById(userId);
+  const room = await Room.findById(roomId);
+  // user의 room 에서 빼주고 
+  let newuserRooms = user.rooms.filter(item => String(item) !== roomId);
+  await User.findOneAndUpdate({_id:userId},{rooms:newuserRooms});
+  
+  // room의 사용자 목록에서 user목록 빼준다.
+  let newroomPeople = room.peoples.filter(item => String(item) !==userId);
+ 
+  //만일 room의 사람들이  0명이면  room을 삭제한다.
+  if(newroomPeople.length !== 0)
+    await Room.findOneAndUpdate({_id:roomId},{peoples:newroomPeople});  
+  else
+    await Room.findByIdAndRemove(roomId);
+  
+}
+
+export const postFriendOut =async (req,res) =>{
+  const{
+    body:{userId}
+  }=req;
+  const user = await User.findById(req.user.id);
+  console.log(user.friends.includes(userId));
+  let newFriends = user.friends.filter(friend=>String(friend) !== userId);
+  
+  await User.findOneAndUpdate({_id:req.user.id},{friends:newFriends});
+}

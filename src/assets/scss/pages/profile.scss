@@ -1,4 +1,22 @@
 .profileWrapper {
+  .delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    &:hover {
+      transform: scale(1.1, 1.1);
+    }
+  }
+  .deleteTitle {
+    position: absolute;
+    top: 50px;
+    right: 2px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #e74c3c;
+  }
+
   width: 100%;
   max-width: 500px;
   height: 80vh;

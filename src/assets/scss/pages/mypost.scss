@@ -1,5 +1,12 @@
 .myPostWrapper {
   margin-top: 30px;
+  .noPost {
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+    font-size: 50px;
+    color: #e74c3c;
+  }
   ul.myPostUl {
     padding: 20px;
     display: grid;

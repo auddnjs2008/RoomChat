@@ -251,9 +251,13 @@ export const postPostEdit = async (req, res) => {
     params: { id },
     body: { title, content },
   } = req;
-
+   const originPost = await Post.findById(id);
+   const originTitle = originPost.title;
+   const originContent =originPost.content;
   try {
-    await Post.findOneAndUpdate({ _id: id }, { title, content });
+    await Post.findOneAndUpdate({ _id: id }, 
+      { title: title === "" ? originTitle : title
+      , content: content ==="" ? originContent : content });
     res.redirect(`/board/${id}`);
   } catch (error) {
     console.log(error);

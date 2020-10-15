@@ -4,6 +4,8 @@ block content
     include ./partials/boardHeader
     .BoardWrapper
         .BoardHome
+            .BoardBackImage
+            .BoardImage
             ul.BoardItems
                 if(allPostes.length !== 0)
                     each post in nowPage
@@ -34,5 +36,5 @@ block content
                             a(href=`/board?page=${i}`)=i        
                 a(href=`/board?page=${BundleNumber-1 >= nowBundle ? startIndex+5 : 1 }`).rightBtn
                     <i class="fas fa-angle-right"></i>
-
-       
+    <a href="https://kr.lovepik.com/images/png-1656669.html">손으로 그린 ​​만화 Png vectors by Lovepik.com</a>
+    <a href="https://kr.lovepik.com/images/png-2685.html">삽화 Png vectors by Lovepik.com</a>

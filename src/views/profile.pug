@@ -2,6 +2,9 @@ extends layouts/main
 
 block content
     .profileWrapper
+        if(isFriend === true)
+            <i class="fas fa-user-minus delete"></i>
+            .deleteTitle  친구삭제
         if user.backgroundUrl
             .backgroundWrapper
                 img(src=`${user.backgroundUrl}`)

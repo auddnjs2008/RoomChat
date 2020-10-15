@@ -7,6 +7,37 @@
   background-color: white;
   position: relative;
   padding-left: 50px;
+  .BoardBackImage {
+    opacity: 0.7;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    height: 500px;
+    background-image: url("https://wewechat.s3-ap-northeast-1.amazonaws.com/images/%EC%9A%B0%EC%A3%BC%EB%B0%B0%EA%B2%BD.png");
+    background-size: cover;
+    background-position: center center;
+  }
+  .BoardImage {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    width: 300px;
+    height: 300px;
+
+    background-image: url("https://wewechat.s3-ap-northeast-1.amazonaws.com/images/%EC%9A%B0%EC%A3%BC%EB%B9%84%ED%96%89%EC%82%AC.png");
+    background-size: cover;
+    background-position: center center;
+    @keyframes boardSpin {
+      0% {
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    animation: boardSpin 15s linear infinite;
+  }
   ul.BoardItems {
     position: absolute;
     top: 60px;

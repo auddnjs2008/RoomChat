@@ -8,6 +8,8 @@ import {
 import {
   chatAddFriend,
   postAddFriend,
+  postChatOut,
+  postFriendOut,
   postMessage,
 } from "../Controller/userController";
 import routes from "../routes";
@@ -20,4 +22,6 @@ apiRouter.post(routes.roommessage, postMessage);
 apiRouter.post(routes.addcomment, postAddComment);
 apiRouter.post(routes.postdelete, postDelete);
 apiRouter.post(routes.sharebtn, emailShareBtn);
+apiRouter.post(routes.chatout,postChatOut);
+apiRouter.post(routes.friendout,postFriendOut);
 export default apiRouter;

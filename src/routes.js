@@ -30,6 +30,9 @@ const ROOMMESSAGE = "/room/messages";
 const ADDCOMMENt = "/board/comment";
 const POSTDELETE = "/board/delete";
 const SHAREBTN = "/email/share";
+const CHATOUT = "/room/out";
+const FRIENDOUT = "/friend/out";
+
 const routes = {
   home: HOME,
   login: LOGIN,
@@ -68,6 +71,8 @@ const routes = {
   addcomment: ADDCOMMENt,
   postdelete: POSTDELETE,
   sharebtn: SHAREBTN,
+  chatout:CHATOUT,
+  friendout:FRIENDOUT,
 };
 
 export default routes;
